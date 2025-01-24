@@ -1,0 +1,31 @@
+{
+  "Units": [
+    {
+      "Name": "Warrior",
+      "Health": [ 100, 100 ],
+      "Damage": [ 10, 10 ],
+      "AttackSpeed": [ 1, 1 ],
+      "AttackRange": [ 1, 1 ],
+      "MoveSpeed": [ 1, 1 ],
+      "Cost": 1
+    },
+    {
+      "Name": "Archer",
+      "Health": [ 50, 50 ],
+      "Damage": [ 20, 20 ],
+      "AttackSpeed": [ 1, 1 ],
+      "AttackRange": [ 3, 3 ],
+      "MoveSpeed": [ 1, 1 ],
+      "Cost": 20
+    },
+    {
+      "Name": "Floaty",
+      "Health": [ 10, 10 ],
+      "Damage": [ 5, 5 ],
+      "AttackSpeed": [ 1, 1 ],
+      "AttackRange": [ 1, 1 ],
+      "MoveSpeed": [ 1, 1 ],
+      "Cost": 5
+    }
+  ]
+}
