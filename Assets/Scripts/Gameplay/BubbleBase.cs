@@ -1,4 +1,6 @@
+using System;
 using System.Resources;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BubbleBase : MonoBehaviour {
@@ -7,6 +9,8 @@ public class BubbleBase : MonoBehaviour {
     public bool isPlayerBase;
     [HideInInspector] public BubbleResourceManager bubbleResource;
     [HideInInspector] public BubbleSpawner bubbleSpawner;
+    private int[] bubbleLevels = new int[4];
+    private int bubbleLevelMAX = 3;//is actually 4 cus array indexing!!
 
     private void Start() {
         currentHealth = maxHealth;
@@ -29,11 +33,32 @@ public class BubbleBase : MonoBehaviour {
     public void SpawnBubble(BubbleType bubbleType, LanePosition lane) {
 
         if (bubbleResource.CanAffordUnit(bubbleType)) {
-            bubbleSpawner.SpawnBubbleUnit(bubbleType, lane, isPlayerBase);
+            bubbleSpawner.SpawnBubbleUnit(bubbleType, lane, isPlayerBase , bubbleLevels[(int)bubbleType]);
             if (bubbleType == BubbleType.Sunflower) {
                 bubbleResource.sunflowerBubbles++;
             }
         }
 
     }
+
+    public void setBubbleLevelOnType(BubbleType bubbleType, int level) 
+    {
+        int pos = (int)bubbleType;
+
+        bubbleLevels[pos] += level;
+        
+        Debug.Log(bubbleType + "level" + bubbleLevels[pos]);
+
+        if (bubbleLevels[pos] > bubbleLevelMAX) 
+        {
+            bubbleLevels[pos] = bubbleLevelMAX;
+        }
+
+
+    }
+    public int getBubbleLevelOnType(BubbleType type) 
+    {
+        return bubbleLevels[(int)type];
+    }
+
 }

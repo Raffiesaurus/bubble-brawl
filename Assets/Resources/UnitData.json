@@ -2,39 +2,43 @@
   "Units": [
     {
       "Name": "Warrior",
-      "Health": [ 100, 100 ],
-      "Damage": [ 10, 10 ],
-      "AttackSpeed": [ 1, 1 ],
-      "AttackRange": [ 1, 1 ],
-      "MoveSpeed": [ 1, 1 ],
-      "Cost": 1
+      "Health": [ 100, 120, 140, 160 ],
+      "Damage": [ 10, 15, 20, 25 ],
+      "AttackSpeed": [ 1, 1.5, 2, 2.5 ],
+      "AttackRange": [ 1, 1, 1, 1 ],
+      "MoveSpeed": [ 1, 2, 2, 2 ],
+      "Cost": 5,
+      "UpgradeCost": [ 15, 20, 30, 40 ]
     },
     {
       "Name": "Archer",
-      "Health": [ 50, 50 ],
-      "Damage": [ 20, 20 ],
-      "AttackSpeed": [ 1, 1 ],
-      "AttackRange": [ 3, 3 ],
-      "MoveSpeed": [ 1, 1 ],
-      "Cost": 20
+      "Health": [ 20, 25, 30, 50 ],
+      "Damage": [ 20, 20, 20, 20 ],
+      "AttackSpeed": [ 1, 2, 3, 4 ],
+      "AttackRange": [ 3, 5, 8, 10 ],
+      "MoveSpeed": [ 1, 1,1 ,1 ],
+      "Cost": 15,
+      "UpgradeCost": [10,5,30,40]
     },
     {
       "Name": "Floaty",
-      "Health": [ 10, 10 ],
-      "Damage": [ 5, 5 ],
-      "AttackSpeed": [ 1, 1 ],
-      "AttackRange": [ 1, 1 ],
-      "MoveSpeed": [ 1, 1 ],
-      "Cost": 5
+      "Health": [ 10, 10, 15, 25 ],
+      "Damage": [ 5, 5, 5, 5 ],
+      "AttackSpeed": [ 1, 1, 1, 1 ],
+      "AttackRange": [ 1, 1, 1, 1 ],
+      "MoveSpeed": [ 1, 1, 2, 4 ],
+      "Cost": 10,
+      "UpgradeCost": [ 10, 8, 30, 40 ]
     },
     {
       "Name": "Sunflower",
-      "Health": [ 50, 50 ],
-      "Damage": [ 20, 20 ],
-      "AttackSpeed": [ 1, 1 ],
-      "AttackRange": [ 3, 3 ],
-      "MoveSpeed": [ 1, 1 ],
-      "Cost": 5
+      "Health": [ 50, 50, 50, 50 ],
+      "Damage": [ 0, 0, 0, 0 ],
+      "AttackSpeed": [ 1, 2, 3, 4 ],
+      "AttackRange": [ 0, 0, 0, 0 ],
+      "MoveSpeed": [ 0, 0, 0, 0 ],
+      "Cost": 20,
+      "UpgradeCost": [ 10, 4, 30, 40 ]
     }
   ]
 }

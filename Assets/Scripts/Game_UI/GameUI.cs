@@ -5,11 +5,26 @@ public class GameUI : MonoBehaviour {
 
     [SerializeField] private TMP_Text bubbleResourceText;
 
+    public GameObject troopUpgradePanel;
+
     private BubbleType chosenBubble = BubbleType.NONE;
 
     private void Update() {
         UpdateResourceDisplay();
     }
+
+
+    public void OnUpgradeMenuButton() 
+    {
+        troopUpgradePanel.SetActive(!troopUpgradePanel.activeSelf);
+
+    }
+
+    public void OnUnitUpgradeButton() 
+    {
+        
+    }
+
 
     public void OnWarriorSpawnButton() {
         chosenBubble = BubbleType.Warrior;
