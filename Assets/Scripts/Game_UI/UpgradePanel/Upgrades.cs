@@ -17,7 +17,7 @@ public class UpgradePanel: MonoBehaviour
     public void OnUnitUpgrade(ButtonType type) 
    {
         BubbleType unitType = type.type;
-        if (resourceManager.CanAffordUpgrade(unitType)) 
+        if (resourceManager.CanAffordUpgrade(unitType, playerBase.GetComponent<BubbleBase>().getBubbleLevelOnType(unitType))) 
         {
             playerBase.GetComponent<BubbleBase>().setBubbleLevelOnType(unitType, 1);
         }

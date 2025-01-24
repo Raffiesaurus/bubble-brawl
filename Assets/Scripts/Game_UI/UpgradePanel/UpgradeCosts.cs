@@ -16,7 +16,7 @@ public class UpgradeCosts: MonoBehaviour
 
     public void Update()
     {
-        float cost = resourceManager.getUpgradeCost(type);
+        float cost = resourceManager.getUpgradeCost(type , bubbleBase.GetComponent<BubbleBase>().getBubbleLevelOnType(type));
         text.SetText(cost.ToString());
     }
 

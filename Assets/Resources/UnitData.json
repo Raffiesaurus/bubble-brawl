@@ -8,7 +8,7 @@
       "AttackRange": [ 1, 1, 1, 1 ],
       "MoveSpeed": [ 1, 2, 2, 2 ],
       "Cost": 5,
-      "UpgradeCost": [ 10, 20, 30, 40 ]
+      "UpgradeCost": [ 15, 20, 30, 40 ]
     },
     {
       "Name": "Archer",
@@ -18,7 +18,7 @@
       "AttackRange": [ 3, 5, 8, 10 ],
       "MoveSpeed": [ 1, 1,1 ,1 ],
       "Cost": 15,
-      "UpgradeCost": [10,20,30,40]
+      "UpgradeCost": [10,5,30,40]
     },
     {
       "Name": "Floaty",
@@ -28,7 +28,7 @@
       "AttackRange": [ 1, 1, 1, 1 ],
       "MoveSpeed": [ 1, 1, 2, 4 ],
       "Cost": 10,
-      "UpgradeCost": [ 10, 20, 30, 40 ]
+      "UpgradeCost": [ 10, 8, 30, 40 ]
     },
     {
       "Name": "Sunflower",
@@ -38,7 +38,7 @@
       "AttackRange": [ 0, 0, 0, 0 ],
       "MoveSpeed": [ 0, 0, 0, 0 ],
       "Cost": 20,
-      "UpgradeCost": [ 10, 20, 30, 40 ]
+      "UpgradeCost": [ 10, 4, 30, 40 ]
     }
   ]
 }
