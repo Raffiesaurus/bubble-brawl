@@ -18,9 +18,10 @@ public abstract class BubbleUnit : MonoBehaviour {
 
     [HideInInspector] public UnitStats baseStats;
 
-    public void Spawn(BubbleType bubbleType, LanePosition lane, int level) {
+    public void Spawn(BubbleType bubbleType, LanePosition lane, int unitLevel, bool isPlayer) {
         type = bubbleType;
         currentLane = lane;
+        level = unitLevel;
         baseStats = GameManager.Instance.GetUnitStats(type.ToString());
         maxHealth = health = baseStats.Health[level];
         damage = baseStats.Damage[level];
@@ -37,19 +38,15 @@ public abstract class BubbleUnit : MonoBehaviour {
     public virtual void TakeDamage(float incomingDamage) {
         health -= incomingDamage;
         if (health <= 0) {
-            Die();
+            Pop();
         }
     }
 
-    protected virtual void Die() {
+    protected virtual void Pop() {
         Destroy(gameObject);
     }
 
     public abstract void Attack(BubbleUnit targetUnit);
-
-    public virtual void SetLevel(int spawnLevel) {
-        level = spawnLevel;
-    }
 
    public virtual float GetUpgradeCost() 
     {

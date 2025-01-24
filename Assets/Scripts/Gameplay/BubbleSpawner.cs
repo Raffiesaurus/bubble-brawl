@@ -7,9 +7,9 @@ public class BubbleSpawner : MonoBehaviour {
 
     public void SpawnBubbleUnit(BubbleType type, LanePosition lane, bool isPlayer , int level) {
         GameObject unitPrefab = PrefabManager.GetPrefabByType(type);
-        BubbleUnit unit = unitPrefab.GetComponent<BubbleUnit>();
 
         GameObject spawnedUnit = Instantiate(unitPrefab, GetSpawnPosition(lane, isPlayer), Quaternion.identity, gameObject.transform);
+        spawnedUnit.GetComponent<BubbleUnit>().Spawn(type, lane, level, isPlayer);
 
         //colour check to make sure levels are different
         switch (level) 
@@ -28,7 +28,6 @@ public class BubbleSpawner : MonoBehaviour {
                 break;
         }
 
-        spawnedUnit.GetComponent<BubbleUnit>().Spawn(type, lane, level);
     }
 
     private Vector3 GetSpawnPosition(LanePosition lane, bool isPlayer) {

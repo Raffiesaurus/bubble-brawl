@@ -29,8 +29,4 @@ public class LaneManager : MonoBehaviour {
         }
         return Vector3.zero;
     }
-
-    void Update() {
-
-    }
 }

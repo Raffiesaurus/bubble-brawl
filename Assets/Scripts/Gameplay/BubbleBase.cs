@@ -9,14 +9,14 @@ public class BubbleBase : MonoBehaviour {
     public bool isPlayerBase;
     [HideInInspector] public BubbleResourceManager bubbleResource;
     [HideInInspector] public BubbleSpawner bubbleSpawner;
-    private int[] bubbleLevels = new int[4];
-    private int bubbleLevelMAX = 3;//is actually 4 cus array indexing!!
+    private UnitLevelManager unitLevelManager;
 
-    private void Start() {
-        currentHealth = maxHealth;
+    void Awake() {
+        unitLevelManager = GetComponent<UnitLevelManager>();
         bubbleResource = GetComponent<BubbleResourceManager>();
-        bubbleResource.isPlayer = isPlayerBase;
         bubbleSpawner = GetComponent<BubbleSpawner>();
+        currentHealth = maxHealth;
+        bubbleResource.isPlayer = isPlayerBase;
     }
 
     public void TakeDamage(float damage) {
@@ -33,32 +33,37 @@ public class BubbleBase : MonoBehaviour {
     public void SpawnBubble(BubbleType bubbleType, LanePosition lane) {
 
         if (bubbleResource.CanAffordUnit(bubbleType)) {
-            bubbleSpawner.SpawnBubbleUnit(bubbleType, lane, isPlayerBase , bubbleLevels[(int)bubbleType]);
+            int currentLevel = unitLevelManager.unitLevels[(int)bubbleType];
+
+            bubbleSpawner.SpawnBubbleUnit(bubbleType, lane, isPlayerBase, currentLevel);
             if (bubbleType == BubbleType.Sunflower) {
                 bubbleResource.sunflowerBubbles++;
             }
+        } else {
+            Debug.Log("Cannot afford unit.");
         }
 
     }
 
-    public void setBubbleLevelOnType(BubbleType bubbleType, int level) 
-    {
-        int pos = (int)bubbleType;
+    public void UpgradeBubbleUnit(BubbleType bubbleType) {
+        int currentLevel = unitLevelManager.unitLevels[(int)bubbleType];
+        if (bubbleResource.CanAffordUpgrade(bubbleType, currentLevel)) {
+            unitLevelManager.unitLevels[(int)bubbleType]++;
+        } else {
+            Debug.Log("Cannot afford the upgrade.");
+        }
+    }
 
-        bubbleLevels[pos] += level;
-        
-        Debug.Log(bubbleType + "level" + bubbleLevels[pos]);
+    public int GetUpgradeCost(BubbleType bubbleType) {
 
-        if (bubbleLevels[pos] > bubbleLevelMAX) 
-        {
-            bubbleLevels[pos] = bubbleLevelMAX;
+        UnitStats stats = GameManager.Instance.GetUnitStats(bubbleType.ToString());
+        int currentLevel = unitLevelManager.unitLevels[(int)bubbleType];
+
+        if (currentLevel + 1 < stats.UpgradeCost.Count) {
+            return stats.UpgradeCost[currentLevel + 1];
+        } else {
+            return -1;
         }
 
-
     }
-    public int getBubbleLevelOnType(BubbleType type) 
-    {
-        return bubbleLevels[(int)type];
-    }
-
 }

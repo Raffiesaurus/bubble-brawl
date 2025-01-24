@@ -148,12 +148,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 419837497}
-  - {fileID: 826442818}
-  - {fileID: 1387657369}
-  - {fileID: 1868917650}
-  - {fileID: 1712907607}
   - {fileID: 2104475031}
+  - {fileID: 419837497}
+  - {fileID: 1487838675}
   - {fileID: 472557274}
   m_Father: {fileID: 658969493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,7 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleResourceText: {fileID: 2104475032}
-  troopUpgradePanel: {fileID: 419837496}
 --- !u!1 &96454865
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde8336f093a4e74ba7845495a010ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inGameUI: {fileID: 63839953}
+  chosenBubble: 0
+  inGameUI_HUD: {fileID: 0}
   gameOverPanel: {fileID: 0}
   gameOverText: {fileID: 0}
 --- !u!1 &229934496
@@ -235,9 +232,8 @@ GameObject:
   - component: {fileID: 229934500}
   - component: {fileID: 229934499}
   - component: {fileID: 229934498}
-  - component: {fileID: 229934501}
   m_Layer: 5
-  m_Name: UPGRADE WARRIOR
+  m_Name: Upgrade Warrior Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,6 +252,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1655070877}
+  - {fileID: 1900497377}
   m_Father: {fileID: 419837497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -309,14 +306,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 419837500}
         m_TargetAssemblyTypeName: UpgradePanel, Assembly-CSharp
-        m_MethodName: OnUnitUpgrade
-        m_Mode: 2
+        m_MethodName: OnUnitUpgradeButton
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 229934501}
-          m_ObjectArgumentAssemblyTypeName: ButtonType, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Warrior
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &229934499
@@ -357,19 +354,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229934496}
   m_CullTransparentMesh: 1
---- !u!114 &229934501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 229934496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6341d4ab1006c984fa4d79147bc9a0ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
 --- !u!1 &233195700
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +366,7 @@ GameObject:
   - component: {fileID: 233195703}
   - component: {fileID: 233195702}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -518,9 +502,8 @@ GameObject:
   - component: {fileID: 291449134}
   - component: {fileID: 291449133}
   - component: {fileID: 291449132}
-  - component: {fileID: 291449135}
   m_Layer: 5
-  m_Name: UPGRADE FLOATY
+  m_Name: Upgrade Floaty Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,6 +522,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2006182381}
+  - {fileID: 769433297}
   m_Father: {fileID: 419837497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -592,14 +576,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 419837500}
         m_TargetAssemblyTypeName: UpgradePanel, Assembly-CSharp
-        m_MethodName: OnUnitUpgrade
-        m_Mode: 2
+        m_MethodName: OnUnitUpgradeButton
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 291449135}
-          m_ObjectArgumentAssemblyTypeName: ButtonType, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Floaty
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &291449133
@@ -640,19 +624,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291449130}
   m_CullTransparentMesh: 1
---- !u!114 &291449135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291449130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6341d4ab1006c984fa4d79147bc9a0ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 2
 --- !u!1 &302447634
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 340369911}
   - component: {fileID: 340369912}
+  - component: {fileID: 340369913}
   m_Layer: 5
   m_Name: Lanes
   m_TagString: Untagged
@@ -742,6 +714,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c503b886d8e4071488799e8d0339745f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &340369913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340369910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5873d6161d5af7149b67a1a7a208ee21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &419837496
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,12 +739,12 @@ GameObject:
   - component: {fileID: 419837498}
   - component: {fileID: 419837500}
   m_Layer: 5
-  m_Name: UpgradePanel
+  m_Name: Upgrade Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &419837497
 RectTransform:
   m_ObjectHideFlags: 0
@@ -778,10 +762,6 @@ RectTransform:
   - {fileID: 950916756}
   - {fileID: 291449131}
   - {fileID: 1029198394}
-  - {fileID: 1639494915}
-  - {fileID: 1900497377}
-  - {fileID: 769433297}
-  - {fileID: 1094292646}
   m_Father: {fileID: 63839952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -839,7 +819,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ebe10fb92aebf4eadc5529badb854f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBase: {fileID: 1379228705}
+  warriorUpgradeCostText: {fileID: 1900497378}
+  archerUpgradeCostText: {fileID: 1094292647}
+  floatyUpgradeCostText: {fileID: 769433298}
+  sunflowerUpgradeCostText: {fileID: 1639494916}
 --- !u!1 &464209436
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +871,7 @@ GameObject:
   - component: {fileID: 472557276}
   - component: {fileID: 472557275}
   m_Layer: 5
-  m_Name: Upgrades
+  m_Name: Upgrade Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1178,6 +1161,7 @@ GameObject:
   - component: {fileID: 612883088}
   - component: {fileID: 612883087}
   - component: {fileID: 612883086}
+  - component: {fileID: 612883089}
   m_Layer: 5
   m_Name: Enemy Base
   m_TagString: Untagged
@@ -1285,6 +1269,19 @@ MonoBehaviour:
   isPlayerBase: 0
   bubbleResource: {fileID: 0}
   bubbleSpawner: {fileID: 0}
+--- !u!114 &612883089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612883082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f6bf360032dbc4eb5fc8c9d6eda74c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitLevels: 
 --- !u!1 &658969488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,9 +1510,8 @@ GameObject:
   - component: {fileID: 769433297}
   - component: {fileID: 769433299}
   - component: {fileID: 769433298}
-  - component: {fileID: 769433300}
   m_Layer: 5
-  m_Name: FLOATY-UPGRADE-COST
+  m_Name: Floaty Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1528,16 +1524,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769433296}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 419837497}
+  m_Father: {fileID: 291449131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75.144, y: -11.96}
+  m_AnchoredPosition: {x: 76.65401, y: 0.73549557}
   m_SizeDelta: {x: 23.286, y: 38.7317}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &769433298
@@ -1641,21 +1637,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769433296}
   m_CullTransparentMesh: 1
---- !u!114 &769433300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769433296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed96f6f5392fb734a9d644edbfbfd9b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 769433298}
-  bubbleBase: {fileID: 1379228705}
-  type: 2
 --- !u!1 &781439642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,7 +1821,7 @@ GameObject:
   - component: {fileID: 826442820}
   - component: {fileID: 826442819}
   m_Layer: 5
-  m_Name: Spawn Warrior
+  m_Name: Spawn Warrior Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1859,7 +1840,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1800567390}
-  m_Father: {fileID: 63839952}
+  m_Father: {fileID: 1487838675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1910,16 +1891,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63839953}
-        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
-        m_MethodName: OnWarriorSpawnButton
-        m_Mode: 1
+      - m_Target: {fileID: 1487838676}
+        m_TargetAssemblyTypeName: SpawnPanel, Assembly-CSharp
+        m_MethodName: OnUnitSpawnButton
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Warrior
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &826442820
@@ -2020,9 +2001,8 @@ GameObject:
   - component: {fileID: 950916759}
   - component: {fileID: 950916758}
   - component: {fileID: 950916757}
-  - component: {fileID: 950916760}
   m_Layer: 5
-  m_Name: UPGRADE ARCHER
+  m_Name: Upgrade Archer Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2041,6 +2021,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1192992212}
+  - {fileID: 1094292646}
   m_Father: {fileID: 419837497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2094,14 +2075,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 419837500}
         m_TargetAssemblyTypeName: UpgradePanel, Assembly-CSharp
-        m_MethodName: OnUnitUpgrade
-        m_Mode: 2
+        m_MethodName: OnUnitUpgradeButton
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 950916760}
-          m_ObjectArgumentAssemblyTypeName: ButtonType, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Archer
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &950916758
@@ -2142,19 +2123,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950916755}
   m_CullTransparentMesh: 1
---- !u!114 &950916760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950916755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6341d4ab1006c984fa4d79147bc9a0ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
 --- !u!1 &975880629
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,7 +2135,7 @@ GameObject:
   - component: {fileID: 975880632}
   - component: {fileID: 975880631}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2433,10 +2401,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63839953}
-        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
-        m_MethodName: OnTopLaneButton
-        m_Mode: 1
+      - m_Target: {fileID: 340369913}
+        m_TargetAssemblyTypeName: LanePanel, Assembly-CSharp
+        m_MethodName: OnLaneButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2457,9 +2425,8 @@ GameObject:
   - component: {fileID: 1029198397}
   - component: {fileID: 1029198396}
   - component: {fileID: 1029198395}
-  - component: {fileID: 1029198398}
   m_Layer: 5
-  m_Name: UPGRADE SUNFLOWER
+  m_Name: Upgrade Sunflower Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2478,6 +2445,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2050331895}
+  - {fileID: 1639494915}
   m_Father: {fileID: 419837497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2531,14 +2499,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 419837500}
         m_TargetAssemblyTypeName: UpgradePanel, Assembly-CSharp
-        m_MethodName: OnUnitUpgrade
-        m_Mode: 2
+        m_MethodName: OnUnitUpgradeButton
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 1029198398}
-          m_ObjectArgumentAssemblyTypeName: ButtonType, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Sunflower
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1029198396
@@ -2579,19 +2547,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029198393}
   m_CullTransparentMesh: 1
---- !u!114 &1029198398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029198393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6341d4ab1006c984fa4d79147bc9a0ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 3
 --- !u!1 &1094292645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,9 +2558,8 @@ GameObject:
   - component: {fileID: 1094292646}
   - component: {fileID: 1094292648}
   - component: {fileID: 1094292647}
-  - component: {fileID: 1094292649}
   m_Layer: 5
-  m_Name: ARCHER-UPGRADE-COST
+  m_Name: Archer Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2618,16 +2572,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094292645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 419837497}
+  m_Father: {fileID: 950916756}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75.144, y: -58.3}
+  m_AnchoredPosition: {x: 75.65401, y: 1.8954659}
   m_SizeDelta: {x: 23.286, y: 38.7317}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1094292647
@@ -2731,21 +2685,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094292645}
   m_CullTransparentMesh: 1
---- !u!114 &1094292649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094292645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed96f6f5392fb734a9d644edbfbfd9b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1094292647}
-  bubbleBase: {fileID: 1379228705}
-  type: 1
 --- !u!1 &1192877661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,7 +2732,7 @@ GameObject:
   - component: {fileID: 1192992214}
   - component: {fileID: 1192992213}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3105,14 +3044,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63839953}
-        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
-        m_MethodName: OnMiddleLaneButton
-        m_Mode: 1
+      - m_Target: {fileID: 340369913}
+        m_TargetAssemblyTypeName: LanePanel, Assembly-CSharp
+        m_MethodName: OnLaneButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3131,6 +3070,7 @@ GameObject:
   - component: {fileID: 1379228711}
   - component: {fileID: 1379228710}
   - component: {fileID: 1379228709}
+  - component: {fileID: 1379228712}
   m_Layer: 5
   m_Name: Player Base
   m_TagString: Untagged
@@ -3238,6 +3178,19 @@ MonoBehaviour:
   isPlayerBase: 1
   bubbleResource: {fileID: 0}
   bubbleSpawner: {fileID: 0}
+--- !u!114 &1379228712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379228705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f6bf360032dbc4eb5fc8c9d6eda74c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitLevels: 
 --- !u!1 &1387657368
 GameObject:
   m_ObjectHideFlags: 0
@@ -3251,7 +3204,7 @@ GameObject:
   - component: {fileID: 1387657371}
   - component: {fileID: 1387657370}
   m_Layer: 5
-  m_Name: Spawn Archer
+  m_Name: Spawn Archer Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3270,7 +3223,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1931907584}
-  m_Father: {fileID: 63839952}
+  m_Father: {fileID: 1487838675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3321,16 +3274,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63839953}
-        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
-        m_MethodName: OnArcherSpawnButton
-        m_Mode: 1
+      - m_Target: {fileID: 1487838676}
+        m_TargetAssemblyTypeName: SpawnPanel, Assembly-CSharp
+        m_MethodName: OnUnitSpawnButton
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Archer
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1387657371
@@ -3406,6 +3359,58 @@ RectTransform:
   m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1487838674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1487838675}
+  - component: {fileID: 1487838676}
+  m_Layer: 5
+  m_Name: SpawnPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1487838675
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487838674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 826442818}
+  - {fileID: 1387657369}
+  - {fileID: 1868917650}
+  - {fileID: 1712907607}
+  m_Father: {fileID: 63839952}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1487838676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487838674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1fe776d2043aa4cb11973827a24369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1639494914
 GameObject:
   m_ObjectHideFlags: 0
@@ -3417,9 +3422,8 @@ GameObject:
   - component: {fileID: 1639494915}
   - component: {fileID: 1639494917}
   - component: {fileID: 1639494916}
-  - component: {fileID: 1639494918}
   m_Layer: 5
-  m_Name: SUNFLOWER-UPGRADE-COST
+  m_Name: Sunflower Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3437,11 +3441,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 419837497}
+  m_Father: {fileID: 1029198394}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73.426, y: 29.534}
+  m_AnchoredPosition: {x: 73.93601, y: -1.270504}
   m_SizeDelta: {x: 19.849, y: 44.2567}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1639494916
@@ -3543,21 +3547,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639494914}
   m_CullTransparentMesh: 1
---- !u!114 &1639494918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639494914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed96f6f5392fb734a9d644edbfbfd9b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1639494916}
-  bubbleBase: {fileID: 1379228705}
-  type: 3
 --- !u!1 &1655070876
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,7 +3559,7 @@ GameObject:
   - component: {fileID: 1655070879}
   - component: {fileID: 1655070878}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3707,7 +3696,7 @@ GameObject:
   - component: {fileID: 1712907609}
   - component: {fileID: 1712907608}
   m_Layer: 5
-  m_Name: Spawn Sunflower
+  m_Name: Spawn Sunflower Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3726,7 +3715,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1805580331}
-  m_Father: {fileID: 63839952}
+  m_Father: {fileID: 1487838675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3777,16 +3766,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63839953}
-        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
-        m_MethodName: OnSunflowerSpawnButton
-        m_Mode: 1
+      - m_Target: {fileID: 1487838676}
+        m_TargetAssemblyTypeName: SpawnPanel, Assembly-CSharp
+        m_MethodName: OnUnitSpawnButton
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Sunflower
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1712907609
@@ -3839,7 +3828,7 @@ GameObject:
   - component: {fileID: 1718098758}
   - component: {fileID: 1718098757}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4010,7 +3999,7 @@ GameObject:
   - component: {fileID: 1800567392}
   - component: {fileID: 1800567391}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4146,7 +4135,7 @@ GameObject:
   - component: {fileID: 1805580333}
   - component: {fileID: 1805580332}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4283,7 +4272,7 @@ GameObject:
   - component: {fileID: 1868917652}
   - component: {fileID: 1868917651}
   m_Layer: 5
-  m_Name: Spawn Floaty
+  m_Name: Spawn Floaty Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4302,7 +4291,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 233195701}
-  m_Father: {fileID: 63839952}
+  m_Father: {fileID: 1487838675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4353,16 +4342,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63839953}
-        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
-        m_MethodName: OnFloatySpawnButton
-        m_Mode: 1
+      - m_Target: {fileID: 1487838676}
+        m_TargetAssemblyTypeName: SpawnPanel, Assembly-CSharp
+        m_MethodName: OnUnitSpawnButton
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Floaty
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1868917652
@@ -4543,14 +4532,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63839953}
-        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
-        m_MethodName: OnBottomLaneButton
-        m_Mode: 1
+      - m_Target: {fileID: 340369913}
+        m_TargetAssemblyTypeName: LanePanel, Assembly-CSharp
+        m_MethodName: OnLaneButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4566,9 +4555,8 @@ GameObject:
   - component: {fileID: 1900497377}
   - component: {fileID: 1900497379}
   - component: {fileID: 1900497378}
-  - component: {fileID: 1900497380}
   m_Layer: 5
-  m_Name: WARRIOR-UPGRADE-COST
+  m_Name: Warrior Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4581,16 +4569,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900497376}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 419837497}
+  m_Father: {fileID: 229934497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73.5, y: 75.898}
+  m_AnchoredPosition: {x: 75, y: 3.5979538}
   m_SizeDelta: {x: 19.9973, y: 37.1951}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1900497378
@@ -4694,21 +4682,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900497376}
   m_CullTransparentMesh: 1
---- !u!114 &1900497380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900497376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed96f6f5392fb734a9d644edbfbfd9b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 1900497378}
-  bubbleBase: {fileID: 1379228705}
-  type: 0
 --- !u!1 &1931907583
 GameObject:
   m_ObjectHideFlags: 0
@@ -4721,7 +4694,7 @@ GameObject:
   - component: {fileID: 1931907586}
   - component: {fileID: 1931907585}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4857,7 +4830,7 @@ GameObject:
   - component: {fileID: 2006182383}
   - component: {fileID: 2006182382}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4993,7 +4966,7 @@ GameObject:
   - component: {fileID: 2050331897}
   - component: {fileID: 2050331896}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5129,7 +5102,7 @@ GameObject:
   - component: {fileID: 2104475033}
   - component: {fileID: 2104475032}
   m_Layer: 5
-  m_Name: Bubble Count
+  m_Name: Bubble Count Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

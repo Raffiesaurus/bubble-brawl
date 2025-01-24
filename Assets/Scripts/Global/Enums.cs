@@ -12,9 +12,3 @@ public enum LanePosition {
     Middle,
     Bottom
 }
-
-public static class BubbleUtility {
-    public static string BubbleTypeToString(BubbleType bubbleType) {
-        return bubbleType.ToString();
-    }
-}

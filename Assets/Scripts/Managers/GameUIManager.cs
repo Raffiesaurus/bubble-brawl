@@ -1,11 +1,12 @@
 using TMPro;
 using UnityEngine;
 
-public class GameUIManager : MonoBehaviour
-{
+public class GameUIManager : MonoBehaviour {
     public static GameUIManager Instance { get; private set; }
 
-    public GameUI inGameUI;
+    public BubbleType chosenBubble;
+
+    public GameUI_HUD inGameUI_HUD;
 
     public GameObject gameOverPanel;
     public TMP_Text gameOverText;
