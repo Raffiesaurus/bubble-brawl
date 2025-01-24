@@ -12,11 +12,6 @@ public class BubbleSpawner : MonoBehaviour {
         spawnedUnit.GetComponent<BubbleUnit>().Spawn(type, lane);
     }
 
-    public void SpawnSunflowerBubble() {
-        // Spawn sunflower bubble to increase resource generation
-        Instantiate(PrefabManager.GetPrefabByType(BubbleType.Sunflower), transform.position, Quaternion.identity);
-    }
-
     private Vector3 GetSpawnPosition(LanePosition lane, bool isPlayer) {
         return LaneManager.Instance.GetStartingPoint(lane, isPlayer);
     }

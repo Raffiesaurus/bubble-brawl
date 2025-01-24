@@ -30,8 +30,6 @@ public abstract class BubbleUnit : MonoBehaviour {
     }
 
     protected virtual void Move() {
-        // Directional movement based on player/AI side
-        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
     }
 
     public virtual void TakeDamage(float incomingDamage) {
@@ -42,7 +40,6 @@ public abstract class BubbleUnit : MonoBehaviour {
     }
 
     protected virtual void Die() {
-        // Destroy bubble unit, potentially spawn effects
         Destroy(gameObject);
     }
 

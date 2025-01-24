@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour {
         if (jsonData != null) {
             UnitData data = JsonUtility.FromJson<UnitData>(jsonData.text);
 
-            // Convert List<UnitStats> to Dictionary<string, UnitStats>
             unitData = new Dictionary<string, UnitStats>();
             foreach (var unit in data.Units) {
                 unitData[unit.Name] = unit;

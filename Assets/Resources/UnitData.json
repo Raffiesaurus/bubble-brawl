@@ -26,6 +26,15 @@
       "AttackRange": [ 1, 1 ],
       "MoveSpeed": [ 1, 1 ],
       "Cost": 5
+    },
+    {
+      "Name": "Sunflower",
+      "Health": [ 50, 50 ],
+      "Damage": [ 20, 20 ],
+      "AttackSpeed": [ 1, 1 ],
+      "AttackRange": [ 3, 3 ],
+      "MoveSpeed": [ 1, 1 ],
+      "Cost": 5
     }
   ]
 }

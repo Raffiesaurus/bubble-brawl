@@ -30,10 +30,10 @@ public class BubbleBase : MonoBehaviour {
 
         if (bubbleResource.CanAffordUnit(bubbleType)) {
             bubbleSpawner.SpawnBubbleUnit(bubbleType, lane, isPlayerBase);
+            if (bubbleType == BubbleType.Sunflower) {
+                bubbleResource.sunflowerBubbles++;
+            }
         }
 
-        if (bubbleType == BubbleType.Sunflower) {
-            bubbleResource.sunflowerBubbles++;
-        }
     }
 }
