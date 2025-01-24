@@ -20,8 +20,26 @@ public class BubbleResourceManager : MonoBehaviour {
         return false;
     }
 
+    public bool CanAffordUpgrade(BubbleType bubbleType) 
+    {
+        int cost = GameManager.Instance.GetUnitStats(bubbleType.ToString()).UpgradeCost[(int)bubbleType];
+        if(currentBubbles >= cost) 
+        {
+            SpendBubbles(cost);
+            return true;
+        }
+        return false;
+    }
+
+
     public void SpendBubbles(float amount) {
         currentBubbles -= amount;
+    }
+
+
+    public int getUpgradeCost(BubbleType type) 
+    {
+        return GameManager.Instance.GetUnitStats(type.ToString()).UpgradeCost[(int)type];
     }
 
     public int GetCurrentBubbles() {

@@ -12,12 +12,13 @@ public abstract class BubbleUnit : MonoBehaviour {
     [HideInInspector] public float damage;
     [HideInInspector] public float moveSpeed;
     [HideInInspector] public float cost;
+    [HideInInspector] public float upgradeCost;
     [HideInInspector] public float attackRange;
     [HideInInspector] public float attackSpeed;
 
     [HideInInspector] public UnitStats baseStats;
 
-    public void Spawn(BubbleType bubbleType, LanePosition lane) {
+    public void Spawn(BubbleType bubbleType, LanePosition lane, int level) {
         type = bubbleType;
         currentLane = lane;
         baseStats = GameManager.Instance.GetUnitStats(type.ToString());
@@ -27,6 +28,7 @@ public abstract class BubbleUnit : MonoBehaviour {
         attackRange = baseStats.AttackRange[level];
         moveSpeed = baseStats.MoveSpeed[level];
         cost = baseStats.Cost;
+        upgradeCost = baseStats.UpgradeCost[level];
     }
 
     protected virtual void Move() {
@@ -47,5 +49,10 @@ public abstract class BubbleUnit : MonoBehaviour {
 
     public virtual void SetLevel(int spawnLevel) {
         level = spawnLevel;
+    }
+
+   public virtual float GetUpgradeCost() 
+    {
+        return upgradeCost;
     }
 }
