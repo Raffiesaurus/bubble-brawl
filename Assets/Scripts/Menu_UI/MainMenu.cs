@@ -6,6 +6,9 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
+using Unity.Services.Core;
+using Unity.Services.Authentication;
+using Unity.Services.Leaderboards;
 
 public class Buttons : MonoBehaviour
 {
@@ -15,6 +18,13 @@ public class Buttons : MonoBehaviour
 
     public TMP_Text LeaderB1, LeaderB2, LeaderB3, LeaderB4, LeaderB5, LeaderB6, LeaderB7, LeaderB8, LeaderB9, LeaderB10;
     private string Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8, Score9, Score10; 
+
+
+    private async void Awake()
+    {
+        await UnityServices.InitializeAsync();
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    }
 
     public void Start()
     {
