@@ -27,6 +27,6 @@ public class GameUI_HUD : MonoBehaviour {
     }
 
     private void UpdateResourceDisplay() {
-        bubbleResourceText.text = $"Bubbles: {Mathf.Floor(GameManager.Instance.GetPlayerBubbles())}";
+        bubbleResourceText.text = $"Bubbles: {Mathf.Floor(GameManager.Instance.GetMyBubbleCount())}";
     }
 }

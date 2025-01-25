@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public Dictionary<string, UnitStats> unitData;
 
     public BubbleBase playerBase;
-    public BubbleBase aiBase;
+    public BubbleBase enemyBase;
 
     private void Awake() {
         if (Instance == null) {
@@ -45,7 +45,15 @@ public class GameManager : MonoBehaviour {
         GameUIManager.GameOver(playerWon);
     }
 
-    public int GetPlayerBubbles() {
+    public int GetMyBubbleCount() {
         return playerBase.bubbleResource.GetCurrentBubbles();
+    }
+
+    public BubbleBase GetEnemyBase(bool isPlayer) {
+        if (!isPlayer) {
+            return enemyBase;
+        } else {
+            return playerBase;
+        }
     }
 }

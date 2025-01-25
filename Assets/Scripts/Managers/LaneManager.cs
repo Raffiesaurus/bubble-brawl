@@ -15,18 +15,19 @@ public class LaneManager : MonoBehaviour {
         lanes = GetComponentsInChildren<Lane>();
     }
 
-    public Vector3 GetStartingPoint(LanePosition lanePosition, bool isPlayer) {
+    public Vector3 GetStartingPoint(LanePosition lanePosition, BubbleUnit bubbleUnit) {
         foreach (Lane lane in lanes) {
             if (lane.lanePosition == lanePosition) {
-                if (isPlayer) {
-                    lane.playerBubbleCount++;
-                    return lane.leftPoint.transform.position;
-                } else {
-                    lane.enemyBubbleCount++;
-                    return lane.rightPoint.transform.position;
-                }
+                lane.AddBubble(bubbleUnit);
+                return lane.GetVectorPoint(bubbleUnit.isPlayerUnit);
             }
         }
         return Vector3.zero;
+    }
+
+    public void CheckToDelete(BubbleUnit unit) {
+        foreach (Lane lane in lanes) {
+            lane.QueueDeletion(unit);
+        }
     }
 }

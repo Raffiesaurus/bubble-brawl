@@ -1,7 +1,10 @@
 using UnityEngine;
 
 public class SunflowerBubble : BubbleUnit {
-    public override void Attack() {
+    protected override void Move() {
+    }
+
+    public override void AttackUnit() {
 
     }
 }

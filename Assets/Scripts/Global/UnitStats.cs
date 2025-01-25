@@ -10,6 +10,7 @@ public class UnitStats {
     public List<int> MoveSpeed;
     public int Cost;
     public List<int> UpgradeCost;
+    public float DetectionRange;
 }
 
 [System.Serializable]

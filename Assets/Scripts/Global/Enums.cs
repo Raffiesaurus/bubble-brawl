@@ -15,5 +15,17 @@ public enum LanePosition {
 
 public enum BubbleState {
     Moving,
-    Fighting,
+    MovingToBase,
+    FightingUnit,
+    FightingBase
+}
+
+public enum AudioClip {
+    BGM,
+    Pop,
+}
+
+public enum SceneNames {
+    MainMenu,
+    Game
 }

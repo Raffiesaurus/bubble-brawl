@@ -25,12 +25,12 @@ public class AIController : MonoBehaviour {
         BubbleType randomType = (BubbleType)Random.Range(0, 3);
         LanePosition randomLane = (LanePosition)Random.Range(0, 3);
 
-        Debug.Log("I am a genius. I summon " + randomType + " in " + randomLane);
+        //Debug.Log("I am a genius. I summon " + randomType + " in " + randomLane);
 
         homeBase.SpawnBubble(randomType, randomLane);
 
-        if (Random.value < 0.2f) {
-            homeBase.SpawnBubble(BubbleType.Sunflower, LanePosition.Middle);
-        }
+        //if (Random.value < 0.2f) {
+        //    homeBase.SpawnBubble(BubbleType.Sunflower, LanePosition.Middle);
+        //}
     }
 }

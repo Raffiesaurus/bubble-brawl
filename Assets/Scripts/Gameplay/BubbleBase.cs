@@ -2,6 +2,7 @@ using System;
 using System.Resources;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BubbleBase : MonoBehaviour {
     public float maxHealth = 100f;
@@ -11,16 +12,19 @@ public class BubbleBase : MonoBehaviour {
     [HideInInspector] public BubbleSpawner bubbleSpawner;
     private UnitLevelManager unitLevelManager;
 
+    private Slider hpSlider;
     void Awake() {
         unitLevelManager = GetComponent<UnitLevelManager>();
         bubbleResource = GetComponent<BubbleResourceManager>();
         bubbleSpawner = GetComponent<BubbleSpawner>();
         currentHealth = maxHealth;
         bubbleResource.isPlayer = isPlayerBase;
+        hpSlider = GetComponentInChildren<Slider>();
     }
 
     public void TakeDamage(float damage) {
         currentHealth -= damage;
+        hpSlider.value = currentHealth / maxHealth;
         if (currentHealth <= 0) {
             HandleBaseDestroyed();
         }
@@ -28,6 +32,7 @@ public class BubbleBase : MonoBehaviour {
 
     private void HandleBaseDestroyed() {
         GameManager.Instance.EndGame(!isPlayerBase);
+        Destroy(gameObject);
     }
 
     public void SpawnBubble(BubbleType bubbleType, LanePosition lane) {

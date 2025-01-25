@@ -6,10 +6,9 @@ public class GameUIManager : MonoBehaviour {
 
     public BubbleType chosenBubble;
 
-    public GameUI_HUD inGameUI_HUD;
+    [SerializeField] private GameUI_HUD inGameUI_HUD;
 
-    public GameObject gameOverPanel;
-    public TMP_Text gameOverText;
+    [SerializeField] private GameOverPanel gameOverPanel;
 
     private void Awake() {
         if (Instance == null) {
@@ -21,7 +20,7 @@ public class GameUIManager : MonoBehaviour {
 
     public static void GameOver(bool playerWon) {
         Time.timeScale = 0;
-        Instance.gameOverPanel.SetActive(true);
-        Instance.gameOverText.text = playerWon ? "Player Wins!" : "AI Wins!";
+        Instance.gameOverPanel.gameObject.SetActive(true);
+        Instance.gameOverPanel.SetText(playerWon);
     }
 }
