@@ -12,3 +12,8 @@ public enum LanePosition {
     Middle,
     Bottom
 }
+
+public enum BubbleState {
+    Moving,
+    Fighting,
+}

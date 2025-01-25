@@ -18,6 +18,10 @@ public abstract class BubbleUnit : MonoBehaviour {
 
     [HideInInspector] public UnitStats baseStats;
 
+    private BubbleState currentState;
+
+    private bool isPlayerUnit = false;
+
     public void Spawn(BubbleType bubbleType, LanePosition lane, int unitLevel, bool isPlayer) {
         type = bubbleType;
         currentLane = lane;
@@ -28,11 +32,33 @@ public abstract class BubbleUnit : MonoBehaviour {
         attackSpeed = baseStats.AttackSpeed[level];
         attackRange = baseStats.AttackRange[level];
         moveSpeed = baseStats.MoveSpeed[level];
-        cost = baseStats.Cost;
         upgradeCost = baseStats.UpgradeCost[level];
+        cost = baseStats.Cost;
+    }
+
+    private void Update() {
+        switch (currentState) {
+            case BubbleState.Moving:
+                Move();
+                DetectEnemies();
+                break;
+            case BubbleState.Fighting:
+                Attack();
+                break;
+        }
     }
 
     protected virtual void Move() {
+        if (isPlayerUnit) {
+            transform.Translate(moveSpeed * Time.deltaTime * Vector2.right);
+        } else {
+            transform.Translate(moveSpeed * Time.deltaTime * Vector2.left);
+        }
+
+    }
+
+    private void DetectEnemies() {
+
     }
 
     public virtual void TakeDamage(float incomingDamage) {
@@ -46,10 +72,9 @@ public abstract class BubbleUnit : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public abstract void Attack(BubbleUnit targetUnit);
+    public abstract void Attack();
 
-   public virtual float GetUpgradeCost() 
-    {
+    public virtual float GetUpgradeCost() {
         return upgradeCost;
     }
 }

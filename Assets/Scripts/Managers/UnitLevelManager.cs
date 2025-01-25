@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UnitLevelManager : MonoBehaviour {
 
-    public int[] unitLevels;
+    [HideInInspector] public int[] unitLevels;
 
     void Awake() {
         var bubbleTypes = Enum.GetValues(typeof(BubbleType));
