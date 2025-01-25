@@ -30,6 +30,10 @@ public class BubbleBase : MonoBehaviour {
         currentHealth = maxHealth;
         bubbleResource.isPlayer = isPlayerBase;
 
+    }
+
+    void Start()
+    {
         accumulatedTime = 0f;
         baseDestroyed = false;
     }
