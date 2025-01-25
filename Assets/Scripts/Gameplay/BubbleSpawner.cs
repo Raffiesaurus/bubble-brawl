@@ -12,8 +12,10 @@ public class BubbleSpawner : MonoBehaviour {
         BubbleUnit spawnedUnitScript = spawnedUnit.GetComponent<BubbleUnit>();
         spawnedUnitScript.Spawn(type, lane, level, isPlayer);
         spawnedUnit.transform.rotation = Quaternion.identity;
-        spawnedUnit.transform.position = GetSpawnPosition(lane, spawnedUnitScript);
-        spawnedUnit.transform.localScale = Vector3.one * (int)(Math.Clamp(level * 1.1, 1, 10));
+        Vector3 spawnPos = GetSpawnPosition(lane, spawnedUnitScript);
+        spawnPos.y += 3;
+        spawnedUnit.transform.position = spawnPos;
+        spawnedUnit.GetComponentInChildren<SphereCollider>().gameObject.transform.localScale = Vector3.one * ((level + 1) * 3.0f);
         spawnedUnit.transform.SetParent(gameObject.transform, true);
         //colour check to make sure levels are different
         /*switch (level) 

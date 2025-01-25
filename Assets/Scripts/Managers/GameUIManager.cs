@@ -10,6 +10,9 @@ public class GameUIManager : MonoBehaviour {
 
     [SerializeField] private GameOverPanel gameOverPanel;
 
+    [SerializeField] public Canvas hpCanvas;
+
+
     private void Awake() {
         if (Instance == null) {
             Instance = this;

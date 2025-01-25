@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class LanePanel : MonoBehaviour {
 
-    public void OnLaneButton(int lane) {
-        switch (lane) {
-            case 0:
+    public void OnLaneButton(LanePosition lanePosition) {
+        switch (lanePosition) {
+            case LanePosition.Top:
                 OnTopLaneButton();
                 break;
-            case 1:
+            case LanePosition.Middle:
                 OnMiddleLaneButton();
                 break;
-            case 2:
+            case LanePosition.Bottom:
                 OnBottomLaneButton();
                 break;
         }

@@ -29,3 +29,9 @@ public enum SceneNames {
     MainMenu,
     Game
 }
+
+public enum ColliderTags {
+    Lane,
+    BubbleUnit,
+    BubbleBase,
+}

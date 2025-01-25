@@ -11,7 +11,7 @@ public class GameUI_HUD : MonoBehaviour {
 
     private LanePanel lanePanel;
 
-    private void Start() {
+    void Awake() {
         unitUpgradePanel = GetComponentInChildren<UpgradePanel>();
         spawnPanel = GetComponentInChildren<SpawnPanel>();
         lanePanel = GetComponentInChildren<LanePanel>();

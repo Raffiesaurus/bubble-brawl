@@ -3,7 +3,9 @@ using UnityEngine;
 public class LaneManager : MonoBehaviour {
     public static LaneManager Instance { get; private set; }
 
+    private LanePanel lanePanel;
     private Lane[] lanes;
+    private Transform selectedObject;
 
     void Start() {
         if (Instance == null) {
@@ -11,7 +13,7 @@ public class LaneManager : MonoBehaviour {
         } else {
             Destroy(gameObject);
         }
-
+        lanePanel = GetComponent<LanePanel>();
         lanes = GetComponentsInChildren<Lane>();
     }
 
@@ -28,6 +30,22 @@ public class LaneManager : MonoBehaviour {
     public void CheckToDelete(BubbleUnit unit) {
         foreach (Lane lane in lanes) {
             lane.QueueDeletion(unit);
+        }
+    }
+
+    private void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, 500.0f)) {
+
+                selectedObject = hit.collider.transform;
+
+                if (selectedObject.TryGetComponent(out Lane lane) != null) {
+                    lanePanel.OnLaneButton(lane.lanePosition);
+                }
+            }
         }
     }
 }

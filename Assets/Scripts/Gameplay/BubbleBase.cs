@@ -13,6 +13,10 @@ public class BubbleBase : MonoBehaviour {
     private UnitLevelManager unitLevelManager;
 
     private Slider hpSlider;
+    public GameObject healthBarPrefab;
+    private Transform canvasTransform;
+    private RectTransform hpSliderRect;
+
     void Awake() {
         unitLevelManager = GetComponent<UnitLevelManager>();
         bubbleResource = GetComponent<BubbleResourceManager>();
@@ -20,6 +24,28 @@ public class BubbleBase : MonoBehaviour {
         currentHealth = maxHealth;
         bubbleResource.isPlayer = isPlayerBase;
         hpSlider = GetComponentInChildren<Slider>();
+    }
+
+    private void Start() {
+        hpSlider = GetComponentInChildren<Slider>();
+
+        canvasTransform = GameUIManager.Instance.hpCanvas.transform;
+
+        if (canvasTransform != null && healthBarPrefab != null) {
+            GameObject healthBar = Instantiate(healthBarPrefab, canvasTransform);
+            hpSlider = healthBar.GetComponent<Slider>();
+            hpSlider.maxValue = maxHealth;
+            hpSlider.value = currentHealth;
+
+            hpSliderRect = healthBar.GetComponent<RectTransform>();
+        }
+
+        if (hpSliderRect != null) {
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 20.5f);
+            hpSliderRect.position = screenPosition;
+            //hpSliderRect.
+        }
+
     }
 
     public void TakeDamage(float damage) {
@@ -57,6 +83,10 @@ public class BubbleBase : MonoBehaviour {
         } else {
             Debug.Log("Cannot afford the upgrade.");
         }
+    }
+
+    private void UpdateHealthBarPosition() {
+        
     }
 
     public int GetUpgradeCost(BubbleType bubbleType) {

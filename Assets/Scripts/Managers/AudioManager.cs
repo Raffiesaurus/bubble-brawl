@@ -7,6 +7,8 @@ public class AudioManager : MonoBehaviour {
     public AudioSource bgmSource;
     public AudioSource sfxSource;
 
+    //public AudioClip[] 
+
     void Start() {
         DontDestroyOnLoad(gameObject);
         if (Instance == null) {

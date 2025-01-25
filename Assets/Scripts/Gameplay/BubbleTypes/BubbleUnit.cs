@@ -31,12 +31,27 @@ public abstract class BubbleUnit : MonoBehaviour {
     private float attackTimer = 0.0f;
 
     private Slider hpSlider;
+    public GameObject healthBarPrefab; // Assign this in the Inspector
+    private Transform canvasTransform; // Reference to the shared canvas
+    private RectTransform hpSliderRect;
 
     private void Start() {
         hpSlider = GetComponentInChildren<Slider>();
+
+        canvasTransform = GameUIManager.Instance.hpCanvas.transform;
+
+        if (canvasTransform != null && healthBarPrefab != null) {
+            GameObject healthBar = Instantiate(healthBarPrefab, canvasTransform);
+            hpSlider = healthBar.GetComponent<Slider>();
+            hpSlider.maxValue = maxHealth;
+            hpSlider.value = currentHealth;
+
+            hpSliderRect = healthBar.GetComponent<RectTransform>();
+        }
+
     }
 
-    public void Spawn(BubbleType bubbleType, LanePosition lane, int unitLevel, bool isPlayer) {
+    public virtual void Spawn(BubbleType bubbleType, LanePosition lane, int unitLevel, bool isPlayer) {
         type = bubbleType;
         currentLane = lane;
         level = unitLevel;
@@ -53,6 +68,10 @@ public abstract class BubbleUnit : MonoBehaviour {
     }
 
     private void Update() {
+
+        UpdateHealthBarPosition();
+
+
         switch (currentState) {
             case BubbleState.Moving:
                 Move();
@@ -75,11 +94,8 @@ public abstract class BubbleUnit : MonoBehaviour {
     }
 
     protected virtual void Move() {
-        if (isPlayerUnit) {
-            transform.Translate(moveSpeed * Time.deltaTime * Vector2.right);
-        } else {
-            transform.Translate(moveSpeed * Time.deltaTime * Vector2.left);
-        }
+        Vector3 direction = isPlayerUnit ? Vector3.right : Vector3.left;
+        transform.Translate(moveSpeed * Time.deltaTime * direction);
     }
 
     protected virtual void MoveToBase() {
@@ -88,32 +104,32 @@ public abstract class BubbleUnit : MonoBehaviour {
     }
 
     private void DetectEnemies() {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
+        Collider[] hits = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
 
-        foreach (Collider2D hit in hits) {
-            BubbleUnit enemyUnit = hit.GetComponent<BubbleUnit>();
+        foreach (Collider hit in hits) {
+            BubbleUnit enemyUnit = hit.GetComponentInParent<BubbleUnit>();
 
-            if (enemyUnit != null && enemyUnit.isPlayerUnit != isPlayerUnit) {
+            if (enemyUnit != null && enemyUnit.isPlayerUnit != isPlayerUnit && currentLane == enemyUnit.currentLane) {
                 targetEnemy = enemyUnit.transform;
                 currentState = BubbleState.FightingUnit;
 
-                moveSpeed = 0;
+                moveSpeed = 0; // Stop movement upon detection
                 return;
             }
         }
     }
 
     private void DetectBase() {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRange, baseLayer);
+        Collider[] hits = Physics.OverlapSphere(transform.position, attackRange, baseLayer);
 
-        foreach (Collider2D hit in hits) {
-            BubbleBase enemyBase = hit.GetComponent<BubbleBase>();
+        foreach (Collider hit in hits) {
+            BubbleBase enemyBase = hit.GetComponentInParent<BubbleBase>();
 
             if (enemyBase != null && enemyBase.isPlayerBase != isPlayerUnit) {
                 targetBase = enemyBase.transform;
                 currentState = BubbleState.FightingBase;
 
-                moveSpeed = 0;
+                moveSpeed = 0; // Stop movement upon detection
                 return;
             }
         }
@@ -122,14 +138,25 @@ public abstract class BubbleUnit : MonoBehaviour {
     public virtual void TakeDamage(float incomingDamage) {
         currentHealth -= incomingDamage;
         hpSlider.value = currentHealth / maxHealth;
+
         if (currentHealth <= 0) {
             Pop();
         }
     }
 
     protected virtual void Pop() {
+        if (hpSlider != null) {
+            Destroy(hpSlider.gameObject);
+        }
         LaneManager.Instance.CheckToDelete(this);
         Destroy(gameObject);
+    }
+
+    private void UpdateHealthBarPosition() {
+        if (hpSliderRect != null) {
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 7.5f);
+            hpSliderRect.position = screenPosition;
+        }
     }
 
     public virtual void AttackUnit() {
@@ -181,4 +208,10 @@ public abstract class BubbleUnit : MonoBehaviour {
     public void SetBubbleState(BubbleState newState) {
         currentState = newState;
     }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
 }

@@ -6,7 +6,7 @@
       "Damage": [ 50, 65, 70, 85 ],
       "AttackSpeed": [ 1, 1.5, 2, 2.5 ],
       "AttackRange": [ 21, 21, 21, 31 ],
-      "MoveSpeed": [ 200, 20, 30, 60 ],
+      "MoveSpeed": [ 10, 20, 30, 40 ],
       "Cost": 1,
       "UpgradeCost": [ 0, 1, 2, 3 ]
     },
@@ -16,7 +16,7 @@
       "Damage": [ 50, 65, 70, 85 ],
       "AttackSpeed": [ 1, 2, 3, 4 ],
       "AttackRange": [ 33, 35, 38, 40 ],
-      "MoveSpeed": [ 40, 20, 30, 40 ],
+      "MoveSpeed": [ 10, 20, 30, 40 ],
       "Cost": 5,
       "UpgradeCost": [ 0, 10, 20, 30 ]
     },
@@ -26,7 +26,7 @@
       "Damage": [ 50, 65, 70, 85 ],
       "AttackSpeed": [ 1, 1, 1, 1 ],
       "AttackRange": [ 11, 21, 31, 41 ],
-      "MoveSpeed": [ 40, 20, 30, 40 ],
+      "MoveSpeed": [ 10, 20, 30, 40 ],
       "Cost": 5,
       "UpgradeCost": [ 0, 10, 20, 30 ]
     },
