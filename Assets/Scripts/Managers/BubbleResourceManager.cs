@@ -1,3 +1,6 @@
+using System;
+using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
@@ -8,8 +11,11 @@ public class BubbleResourceManager : MonoBehaviour {
     [HideInInspector] public int sunflowerBubbles = 0;
     [HideInInspector] public bool isPlayer = false;
 
+    public TMP_Text bubbleDisp;
+
     private void Update() {
         currentBubbles += (bubbleGenerationRate + sunflowerBubbles) * Time.deltaTime;
+        Display();
     }
 
     public bool CanAffordUnit(BubbleType bubbleType) {
@@ -40,7 +46,16 @@ public class BubbleResourceManager : MonoBehaviour {
         currentBubbles -= amount;
     }
 
+    public void Display()
+    {
+        int convert;
+
+        convert = GetCurrentBubbles();
+        bubbleDisp.text = "Bubbles " + Convert.ToString(convert);
+    }
+
     public int GetCurrentBubbles() {
         return Mathf.FloorToInt(currentBubbles);
     }
+
 }

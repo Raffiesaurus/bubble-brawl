@@ -13,21 +13,23 @@ public class UpgradePanel : MonoBehaviour {
     [SerializeField] private TMP_Text floatyUpgradeCostText;
     [SerializeField] private TMP_Text sunflowerUpgradeCostText;
 
+    public GameObject panel; 
+
     private void Start() {
         SetNewCosts();
         Hide();
     }
 
     public void Show() {
-        gameObject.SetActive(false);
+        panel.SetActive(true);
     }
 
     public void Hide() {
-        gameObject.SetActive(false);
+        panel.SetActive(false);
     }
 
     public void ToggleActive() {
-        if (gameObject.activeSelf) {
+        if (panel.activeSelf) {
             Hide();
         } else {
             Show();

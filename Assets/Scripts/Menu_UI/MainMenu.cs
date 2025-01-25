@@ -20,11 +20,11 @@ public class Buttons : MonoBehaviour
     private string Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8, Score9, Score10; 
 
 
-    private async void Awake()
-    {
-        await UnityServices.InitializeAsync();
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
-    }
+    // private async void Awake()
+    // {
+    //     await UnityServices.InitializeAsync();
+    //     await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    // }
 
     public void Start()
     {
