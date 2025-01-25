@@ -13,8 +13,7 @@ public enum LanePosition {
     Bottom
 }
 
-public static class BubbleUtility {
-    public static string BubbleTypeToString(BubbleType bubbleType) {
-        return bubbleType.ToString();
-    }
+public enum BubbleState {
+    Moving,
+    Fighting,
 }

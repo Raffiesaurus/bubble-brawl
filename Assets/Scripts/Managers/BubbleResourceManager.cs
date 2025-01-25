@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class BubbleResourceManager : MonoBehaviour {
@@ -18,6 +19,21 @@ public class BubbleResourceManager : MonoBehaviour {
             return true;
         }
         return false;
+    }
+
+    public bool CanAffordUpgrade(BubbleType bubbleType, int currentLevel) {
+        UnitStats stats = GameManager.Instance.GetUnitStats(bubbleType.ToString());
+        if (currentLevel + 1 < stats.UpgradeCost.Count) {
+            int cost = stats.UpgradeCost[currentLevel + 1];
+            if (currentBubbles >= cost) {
+                SpendBubbles(cost);
+                return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
+
     }
 
     public void SpendBubbles(float amount) {

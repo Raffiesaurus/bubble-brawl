@@ -1,4 +1,6 @@
+using System;
 using System.Resources;
+using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,12 +21,14 @@ public class BubbleBase : MonoBehaviour {
     float accumulatedTime;
     bool baseDestroyed;
     private float surviviedTime;
+    private UnitLevelManager unitLevelManager;
 
-    private void Start() {
-        currentHealth = maxHealth;
+    void Awake() {
+        unitLevelManager = GetComponent<UnitLevelManager>();
         bubbleResource = GetComponent<BubbleResourceManager>();
-        bubbleResource.isPlayer = isPlayerBase;
         bubbleSpawner = GetComponent<BubbleSpawner>();
+        currentHealth = maxHealth;
+        bubbleResource.isPlayer = isPlayerBase;
 
         accumulatedTime = 0f;
         baseDestroyed = false;
@@ -81,10 +85,36 @@ public class BubbleBase : MonoBehaviour {
     public void SpawnBubble(BubbleType bubbleType, LanePosition lane) {
 
         if (bubbleResource.CanAffordUnit(bubbleType)) {
-            bubbleSpawner.SpawnBubbleUnit(bubbleType, lane, isPlayerBase);
+            int currentLevel = unitLevelManager.unitLevels[(int)bubbleType];
+
+            bubbleSpawner.SpawnBubbleUnit(bubbleType, lane, isPlayerBase, currentLevel);
             if (bubbleType == BubbleType.Sunflower) {
                 bubbleResource.sunflowerBubbles++;
             }
+        } else {
+            Debug.Log("Cannot afford unit.");
+        }
+
+    }
+
+    public void UpgradeBubbleUnit(BubbleType bubbleType) {
+        int currentLevel = unitLevelManager.unitLevels[(int)bubbleType];
+        if (bubbleResource.CanAffordUpgrade(bubbleType, currentLevel)) {
+            unitLevelManager.unitLevels[(int)bubbleType]++;
+        } else {
+            Debug.Log("Cannot afford the upgrade.");
+        }
+    }
+
+    public int GetUpgradeCost(BubbleType bubbleType) {
+
+        UnitStats stats = GameManager.Instance.GetUnitStats(bubbleType.ToString());
+        int currentLevel = unitLevelManager.unitLevels[(int)bubbleType];
+
+        if (currentLevel + 1 < stats.UpgradeCost.Count) {
+            return stats.UpgradeCost[currentLevel + 1];
+        } else {
+            return -1;
         }
 
     }

@@ -9,6 +9,7 @@ public class UnitStats {
     public List<int> AttackRange;
     public List<int> MoveSpeed;
     public int Cost;
+    public List<int> UpgradeCost;
 }
 
 [System.Serializable]
