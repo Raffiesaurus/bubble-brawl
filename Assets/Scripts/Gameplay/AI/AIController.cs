@@ -3,7 +3,7 @@ using UnityEngine;
 public class AIController : MonoBehaviour {
     private BubbleBase homeBase;
 
-    private const float RESOURCE_SAVE_THRESHOLD = 20f;
+    private const float RESOURCE_SAVE_THRESHOLD = 10f;
     private const float RESOURCE_BURST_THRESHOLD = 50f;
     private const int UNIT_THRESHOLD = 3;
     private float decisionCooldown = 1f;
@@ -26,8 +26,8 @@ public class AIController : MonoBehaviour {
     private void AnalyzeAndAct() {
         float currentResources = homeBase.bubbleResource.GetCurrentBubbles();
 
-        if (currentResources < RESOURCE_SAVE_THRESHOLD) {
-            if (Random.value < 0.5f && homeBase.bubbleResource.sunflowerBubbles < 3) {
+        if (Random.value < 0.5f && currentResources < RESOURCE_SAVE_THRESHOLD) {
+            if (Random.value < 0.25f && homeBase.bubbleResource.sunflowerBubbles < 3) {
                 homeBase.SpawnBubble(BubbleType.Sunflower, LanePosition.Middle);
             }
             return;

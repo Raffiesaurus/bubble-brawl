@@ -27,13 +27,18 @@ public class BubbleBase : MonoBehaviour {
         bubbleSpawner = GetComponent<BubbleSpawner>();
         currentHealth = maxHealth;
         bubbleResource.isPlayer = isPlayerBase;
-        hpSlider = GetComponentInChildren<Slider>();
 
         hpSlider = Instantiate(healthBarPrefab, transform.position, Quaternion.identity).GetComponentInChildren<Slider>();
-        hpSlider.transform.localScale = new Vector3(4, 1, 1);
+        hpSlider.transform.localScale = new Vector3(1, 1, 1);
         hpSlider.gameObject.transform.SetParent(GameUIManager.Instance.hpCanvas.transform, false);
 
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(gameObject.transform.position + Vector3.up * 65.0f);
+        if (isPlayerBase) {
+            screenPosition.x += 20.0f;
+        } else {
+            screenPosition.x -= 20.0f;
+
+        }
         hpSlider.gameObject.transform.position = screenPosition;
     }
 

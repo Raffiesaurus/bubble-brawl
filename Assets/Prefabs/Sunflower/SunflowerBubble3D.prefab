@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6720498483970126494}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1915692129267320320}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,6 +205,7 @@ MonoBehaviour:
   baseDirection: {x: 0, y: 0, z: 0}
   healthBarPrefab: {fileID: 670020082904144862, guid: 4d029627b8a462b4fac841f227b893d5, type: 3}
   rotatorJoint: {fileID: 575606970541603154}
+  attackClip: 0
 --- !u!1 &3724273946694059965
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,9 +606,9 @@ GameObject:
   - component: {fileID: 1175066841699428312}
   - component: {fileID: 1560757073041470126}
   - component: {fileID: 8891874678527009996}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bubble_Flower_Base 1
-  m_TagString: Untagged
+  m_TagString: BubbleUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -709,7 +710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2332690254954099178}
   - component: {fileID: 5667541329980550027}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bubble_Sunflower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

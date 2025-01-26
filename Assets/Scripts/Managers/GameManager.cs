@@ -71,4 +71,8 @@ public class GameManager : MonoBehaviour {
             return playerBase;
         }
     }
+
+    public string GetCurrentUnitCost(BubbleType type) {
+        return GetUnitStats(type.ToString()).Cost.ToString();
+    }
 }

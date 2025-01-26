@@ -37,6 +37,8 @@ public abstract class BubbleUnit : MonoBehaviour {
 
     public GameObject rotatorJoint;
 
+    public AudioClips attackClip;
+
     private void Start() {
 
         hpSlider = Instantiate(healthBarPrefab, transform.position, Quaternion.identity).GetComponentInChildren<Slider>();
@@ -93,6 +95,7 @@ public abstract class BubbleUnit : MonoBehaviour {
     protected virtual void Move() {
         Vector3 direction = isPlayerUnit ? Vector3.right : Vector3.left;
         transform.Translate(moveSpeed * Time.deltaTime * direction);
+        animator.speed = 1.0f;
         animator.SetTrigger(AnimatorTriggers.StartMove.ToString());
     }
 
@@ -100,6 +103,7 @@ public abstract class BubbleUnit : MonoBehaviour {
         moveSpeed = baseStats.MoveSpeed[level];
         rotatorJoint.transform.eulerAngles = baseDirection.normalized;
         transform.Translate(moveSpeed * 1.5f * Time.deltaTime * baseDirection.normalized);
+        animator.speed = 1.0f;
         animator.SetTrigger(AnimatorTriggers.StartMove.ToString());
     }
 
@@ -159,7 +163,7 @@ public abstract class BubbleUnit : MonoBehaviour {
     }
 
 
-    
+
     public virtual void AttackUnit() {
         if (targetEnemy == null) {
             currentState = BubbleState.Moving;
@@ -168,14 +172,19 @@ public abstract class BubbleUnit : MonoBehaviour {
         }
 
         attackTimer -= Time.deltaTime;
+        if (isPlayerUnit)
+            Debug.Log($"{attackTimer}");
         if (attackTimer <= 0) {
-            attackTimer = 1 / attackSpeed;
+            attackTimer = 1.0f / attackSpeed;
 
-            animator.SetTrigger(AnimatorTriggers.StartFight.ToString());
-            
             BubbleUnit enemyUnit = targetEnemy.GetComponent<BubbleUnit>();
             if (enemyUnit != null) {
-                
+                animator.SetFloat(AnimatorTriggers.SpeedMult.ToString(), attackSpeed * 10.0f);
+                animator.SetTrigger(AnimatorTriggers.StartFight.ToString());
+
+                if (isPlayerUnit)
+                    AudioManager.Instance.PlayAudioClip(attackClip, 1);
+
                 enemyUnit.TakeDamage(damage);
 
                 if (enemyUnit.currentHealth <= 0 || enemyUnit == null) {
@@ -183,6 +192,9 @@ public abstract class BubbleUnit : MonoBehaviour {
                     currentState = BubbleState.Moving;
                     moveSpeed = baseStats.MoveSpeed[level];
                 }
+            } else {
+                currentState = BubbleState.Moving;
+                moveSpeed = baseStats.MoveSpeed[level];
             }
         }
     }

@@ -44,4 +44,5 @@ public enum ColliderTags {
 public enum AnimatorTriggers {
     StartMove,
     StartFight,
+    SpeedMult
 }

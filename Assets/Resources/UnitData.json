@@ -4,7 +4,7 @@
       "Name": "Warrior",
       "Health": [ 100, 130, 160, 200 ],
       "Damage": [ 50, 65, 80, 100 ],
-      "AttackSpeed": [ 0.75, 1, 1.25, 1.5 ],
+      "AttackSpeed": [ 1, 1, 1.25, 1.5 ],
       "AttackRange": [ 15, 20, 25, 30 ],
       "MoveSpeed": [ 5, 10, 15, 20 ],
       "Cost": 5,
