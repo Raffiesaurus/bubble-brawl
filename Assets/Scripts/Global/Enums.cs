@@ -35,3 +35,8 @@ public enum ColliderTags {
     BubbleUnit,
     BubbleBase,
 }
+
+public enum AnimatorTriggers {
+    StartMove,
+    StartFight,
+}

@@ -12,39 +12,29 @@ public class BubbleBase : MonoBehaviour {
     [HideInInspector] public BubbleSpawner bubbleSpawner;
     private UnitLevelManager unitLevelManager;
 
+    public Transform[] sunflowerSpots;
+
     private Slider hpSlider;
     public GameObject healthBarPrefab;
-    private Transform canvasTransform;
-    private RectTransform hpSliderRect;
+
 
     void Awake() {
+    }
+
+    private void Start() {
         unitLevelManager = GetComponent<UnitLevelManager>();
         bubbleResource = GetComponent<BubbleResourceManager>();
         bubbleSpawner = GetComponent<BubbleSpawner>();
         currentHealth = maxHealth;
         bubbleResource.isPlayer = isPlayerBase;
         hpSlider = GetComponentInChildren<Slider>();
-    }
 
-    private void Start() {
-        hpSlider = GetComponentInChildren<Slider>();
+        hpSlider = Instantiate(healthBarPrefab, transform.position, Quaternion.identity).GetComponentInChildren<Slider>();
+        hpSlider.transform.localScale = Vector3.one * 2;
+        hpSlider.gameObject.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
-        canvasTransform = GameUIManager.Instance.hpCanvas.transform;
-
-        if (canvasTransform != null && healthBarPrefab != null) {
-            GameObject healthBar = Instantiate(healthBarPrefab, canvasTransform);
-            hpSlider = healthBar.GetComponent<Slider>();
-            hpSlider.maxValue = maxHealth;
-            hpSlider.value = currentHealth;
-
-            hpSliderRect = healthBar.GetComponent<RectTransform>();
-        }
-
-        if (hpSliderRect != null) {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 20.5f);
-            hpSliderRect.position = screenPosition;
-            //hpSliderRect.
-        }
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(gameObject.transform.position + Vector3.up * 15.5f);
+        hpSlider.gameObject.transform.position = screenPosition;
 
     }
 
@@ -57,6 +47,11 @@ public class BubbleBase : MonoBehaviour {
     }
 
     private void HandleBaseDestroyed() {
+        BubbleUnit[] bubbleChildren = GetComponentsInChildren<BubbleUnit>();
+        foreach (BubbleUnit bubbleChild in bubbleChildren) {
+            bubbleChild.Pop();
+        }
+        Destroy(hpSlider.gameObject);
         GameManager.Instance.EndGame(!isPlayerBase);
         Destroy(gameObject);
     }
@@ -66,9 +61,15 @@ public class BubbleBase : MonoBehaviour {
         if (bubbleResource.CanAffordUnit(bubbleType)) {
             int currentLevel = unitLevelManager.unitLevels[(int)bubbleType];
 
-            bubbleSpawner.SpawnBubbleUnit(bubbleType, lane, isPlayerBase, currentLevel);
-            if (bubbleType == BubbleType.Sunflower) {
-                bubbleResource.sunflowerBubbles++;
+            if (bubbleType != BubbleType.Sunflower) {
+                bubbleSpawner.SpawnBubbleUnit(bubbleType, lane, isPlayerBase, currentLevel);
+            } else {
+                if (bubbleResource.sunflowerBubbles <= 2) {
+                    bubbleSpawner.SpawnSunflower(isPlayerBase, currentLevel, sunflowerSpots[bubbleResource.sunflowerBubbles]);
+                    bubbleResource.sunflowerBubbles++;
+                } else {
+                    Debug.Log("Maximum sunflowers reached");
+                }
             }
         } else {
             Debug.Log("Cannot afford unit.");
@@ -85,10 +86,6 @@ public class BubbleBase : MonoBehaviour {
         }
     }
 
-    private void UpdateHealthBarPosition() {
-        
-    }
-
     public int GetUpgradeCost(BubbleType bubbleType) {
 
         UnitStats stats = GameManager.Instance.GetUnitStats(bubbleType.ToString());
@@ -100,5 +97,13 @@ public class BubbleBase : MonoBehaviour {
             return -1;
         }
 
+    }
+
+    public void Reset() {
+        Debug.Log("Base Reset");
+        currentHealth = maxHealth;
+        bubbleResource.Reset();
+        unitLevelManager.Reset();
+        hpSlider.value = currentHealth / maxHealth;
     }
 }

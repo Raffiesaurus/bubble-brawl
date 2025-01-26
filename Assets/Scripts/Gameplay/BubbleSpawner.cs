@@ -15,25 +15,20 @@ public class BubbleSpawner : MonoBehaviour {
         Vector3 spawnPos = GetSpawnPosition(lane, spawnedUnitScript);
         spawnPos.y += 3;
         spawnedUnit.transform.position = spawnPos;
-        spawnedUnit.GetComponentInChildren<SphereCollider>().gameObject.transform.localScale = Vector3.one * ((level + 1) * 3.0f);
+        //spawnedUnit.GetComponentInChildren<SphereCollider>().gameObject.transform.localScale = Vector3.one * ((level + 1) * 3.0f);
         spawnedUnit.transform.SetParent(gameObject.transform, true);
-        //colour check to make sure levels are different
-        /*switch (level) 
-        {
-            case 0:
-                spawnedUnit.GetComponent<Image>().color = Color.white;
-                break;
-            case 1:
-                spawnedUnit.GetComponent<Image>().color = Color.red;
-                break;
-            case 2:
-                spawnedUnit.GetComponent <Image>().color = Color.green;
-                break;
-            case 3:
-                spawnedUnit.GetComponent<Image>().color = Color.blue;
-                break;
-        }*/
+    }
 
+    public void SpawnSunflower(bool isPlayer, int level, Transform spawnPot) {
+        GameObject unitPrefab = PrefabManager.GetPrefabByType(BubbleType.Sunflower);
+
+        GameObject spawnedUnit = Instantiate(unitPrefab);
+        BubbleUnit spawnedUnitScript = spawnedUnit.GetComponent<BubbleUnit>();
+
+        spawnedUnit.transform.rotation = Quaternion.identity;
+        Vector3 spawnPos = spawnPot.position;
+        spawnedUnit.transform.position = spawnPos;
+        spawnedUnit.transform.SetParent(gameObject.transform, true);
     }
 
     private Vector3 GetSpawnPosition(LanePosition lane, BubbleUnit bubbleUnit) {

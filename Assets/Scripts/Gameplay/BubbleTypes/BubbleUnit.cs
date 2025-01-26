@@ -17,6 +17,8 @@ public abstract class BubbleUnit : MonoBehaviour {
 
     [HideInInspector] public UnitStats baseStats;
 
+    private Animator animator;
+
     public BubbleState currentState = BubbleState.Moving;
     public bool isPlayerUnit = false;
 
@@ -31,24 +33,19 @@ public abstract class BubbleUnit : MonoBehaviour {
     private float attackTimer = 0.0f;
 
     private Slider hpSlider;
-    public GameObject healthBarPrefab; // Assign this in the Inspector
-    private Transform canvasTransform; // Reference to the shared canvas
-    private RectTransform hpSliderRect;
+    public GameObject healthBarPrefab;
+
+    public GameObject rotatorJoint;
 
     private void Start() {
-        hpSlider = GetComponentInChildren<Slider>();
 
-        canvasTransform = GameUIManager.Instance.hpCanvas.transform;
+        hpSlider = Instantiate(healthBarPrefab, transform.position, Quaternion.identity).GetComponentInChildren<Slider>();
+        hpSlider.gameObject.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
-        if (canvasTransform != null && healthBarPrefab != null) {
-            GameObject healthBar = Instantiate(healthBarPrefab, canvasTransform);
-            hpSlider = healthBar.GetComponent<Slider>();
-            hpSlider.maxValue = maxHealth;
-            hpSlider.value = currentHealth;
-
-            hpSliderRect = healthBar.GetComponent<RectTransform>();
+        animator = GetComponentInChildren<Animator>();
+        if (!isPlayerUnit) {
+            rotatorJoint.transform.eulerAngles = new Vector3(rotatorJoint.transform.eulerAngles.x, rotatorJoint.transform.eulerAngles.y + 180, rotatorJoint.transform.eulerAngles.z);
         }
-
     }
 
     public virtual void Spawn(BubbleType bubbleType, LanePosition lane, int unitLevel, bool isPlayer) {
@@ -70,7 +67,6 @@ public abstract class BubbleUnit : MonoBehaviour {
     private void Update() {
 
         UpdateHealthBarPosition();
-
 
         switch (currentState) {
             case BubbleState.Moving:
@@ -96,11 +92,14 @@ public abstract class BubbleUnit : MonoBehaviour {
     protected virtual void Move() {
         Vector3 direction = isPlayerUnit ? Vector3.right : Vector3.left;
         transform.Translate(moveSpeed * Time.deltaTime * direction);
+        animator.SetTrigger(AnimatorTriggers.StartMove.ToString());
     }
 
     protected virtual void MoveToBase() {
         moveSpeed = baseStats.MoveSpeed[level];
-        transform.Translate(baseDirection.normalized * moveSpeed * Time.deltaTime);
+        rotatorJoint.transform.eulerAngles = baseDirection.normalized;
+        transform.Translate(moveSpeed * 1.5f * Time.deltaTime * baseDirection.normalized);
+        animator.SetTrigger(AnimatorTriggers.StartMove.ToString());
     }
 
     private void DetectEnemies() {
@@ -113,7 +112,7 @@ public abstract class BubbleUnit : MonoBehaviour {
                 targetEnemy = enemyUnit.transform;
                 currentState = BubbleState.FightingUnit;
 
-                moveSpeed = 0; // Stop movement upon detection
+                moveSpeed = 0;
                 return;
             }
         }
@@ -128,9 +127,9 @@ public abstract class BubbleUnit : MonoBehaviour {
             if (enemyBase != null && enemyBase.isPlayerBase != isPlayerUnit) {
                 targetBase = enemyBase.transform;
                 currentState = BubbleState.FightingBase;
-
-                moveSpeed = 0; // Stop movement upon detection
-                return;
+                AttackBase();
+                moveSpeed = 0;
+                break;
             }
         }
     }
@@ -144,7 +143,7 @@ public abstract class BubbleUnit : MonoBehaviour {
         }
     }
 
-    protected virtual void Pop() {
+    public virtual void Pop() {
         if (hpSlider != null) {
             Destroy(hpSlider.gameObject);
         }
@@ -153,10 +152,8 @@ public abstract class BubbleUnit : MonoBehaviour {
     }
 
     private void UpdateHealthBarPosition() {
-        if (hpSliderRect != null) {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 7.5f);
-            hpSliderRect.position = screenPosition;
-        }
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(gameObject.transform.position + Vector3.up * 15.5f);
+        hpSlider.gameObject.transform.position = screenPosition;
     }
 
     public virtual void AttackUnit() {
@@ -169,7 +166,7 @@ public abstract class BubbleUnit : MonoBehaviour {
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0) {
             attackTimer = 1 / attackSpeed;
-
+            animator.SetTrigger(AnimatorTriggers.StartFight.ToString());
             BubbleUnit enemyUnit = targetEnemy.GetComponent<BubbleUnit>();
             if (enemyUnit != null) {
                 enemyUnit.TakeDamage(damage);

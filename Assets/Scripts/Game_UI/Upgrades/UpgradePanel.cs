@@ -40,7 +40,6 @@ public class UpgradePanel : MonoBehaviour {
     private void SetNewCosts() {
         BubbleBase playerBase = GameManager.Instance.playerBase;
 
-        // Map each BubbleType to its corresponding UI Text component
         var upgradeCosts = new Dictionary<BubbleType, TMP_Text>() {
         { BubbleType.Warrior, warriorUpgradeCostText },
         { BubbleType.Archer, archerUpgradeCostText },

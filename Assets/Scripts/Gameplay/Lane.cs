@@ -50,7 +50,7 @@ public class Lane : MonoBehaviour {
             }
 
             if (bubbleUnit.currentState == BubbleState.MovingToBase) {
-                continue; // Skip units already moving to base
+                continue;
             }
 
             float distanceToPoint = Mathf.Abs(bubbleUnit.transform.position.x -

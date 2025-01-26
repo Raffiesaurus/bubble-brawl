@@ -14,4 +14,13 @@ public class UnitLevelManager : MonoBehaviour {
         }
     }
 
+    public void Reset() {
+        var bubbleTypes = Enum.GetValues(typeof(BubbleType));
+        unitLevels = new int[bubbleTypes.Length];
+
+        for (int i = 0; i < bubbleTypes.Length; i++) {
+            unitLevels[i] = 0;
+        }
+    }
+
 }

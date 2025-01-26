@@ -43,4 +43,10 @@ public class BubbleResourceManager : MonoBehaviour {
     public int GetCurrentBubbles() {
         return Mathf.FloorToInt(currentBubbles);
     }
+
+    public void Reset() {
+        currentBubbles = 0f;
+        bubbleGenerationRate = 1f;
+        sunflowerBubbles = 0;
+    }
 }

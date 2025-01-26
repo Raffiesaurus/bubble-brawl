@@ -42,7 +42,7 @@ public class LaneManager : MonoBehaviour {
 
                 selectedObject = hit.collider.transform;
 
-                if (selectedObject.TryGetComponent(out Lane lane) != null) {
+                if (selectedObject.parent.TryGetComponent(out Lane lane)) {
                     lanePanel.OnLaneButton(lane.lanePosition);
                 }
             }

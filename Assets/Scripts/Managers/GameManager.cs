@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour {
         LoadUnitData();
     }
 
+    private void Start() {
+        StartGame();
+    }
+
     private void LoadUnitData() {
         TextAsset jsonData = Resources.Load<TextAsset>("UnitData");
         if (jsonData != null) {
@@ -39,6 +43,11 @@ public class GameManager : MonoBehaviour {
         }
         Debug.LogError($"Unit {unitName} not found in UnitData!");
         return null;
+    }
+
+    public void StartGame() {
+        playerBase.Reset();
+        enemyBase.Reset();
     }
 
     public void EndGame(bool playerWon) {
