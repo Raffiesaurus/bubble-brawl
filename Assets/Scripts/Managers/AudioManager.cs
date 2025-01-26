@@ -6,6 +6,9 @@ public class AudioManager : MonoBehaviour {
     public AudioSource bgmSource;
     public AudioSource sfxSource;
 
+    public float bgmVolume;
+    public float sfxVolume;
+
     public AudioClip[] clips;
 
     void Awake() {
@@ -31,6 +34,17 @@ public class AudioManager : MonoBehaviour {
         if (bgmSource != null && bgmSource.isPlaying) {
             bgmSource.Stop();
         }
+    }
+
+    public void ChangeBGMVolume(float newVolume) {
+        bgmVolume = newVolume;
+        bgmSource.volume = bgmVolume;
+    }
+
+    public void ChangeSFXVolume(float newVolume) {
+        sfxVolume = newVolume;
+        sfxSource.volume = sfxVolume;
+        PlayAudioClip(AudioClips.Pop);
     }
 
     public void PlayAudioClip(AudioClips clip) {
