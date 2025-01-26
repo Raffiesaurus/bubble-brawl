@@ -22,6 +22,7 @@ public class GameUI_HUD : MonoBehaviour {
 
     public void OnPauseButton() {
         Time.timeScale = 0.0f;
+        AudioManager.Instance.PlayAudioClip(AudioClips.ButtonClicked, 1);
         pausePanel.gameObject.SetActive(true);
     }
 
@@ -31,6 +32,8 @@ public class GameUI_HUD : MonoBehaviour {
 
     public void OnUpgradeMenuButton() {
         //unitUpgradePanel.ToggleActive();
+
+        AudioManager.Instance.PlayAudioClip(AudioClips.ButtonClicked, 1);
         unitUpgradePanel.gameObject.SetActive(!unitUpgradePanel.gameObject.activeSelf);
     }
 

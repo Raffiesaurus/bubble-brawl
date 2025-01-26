@@ -62,6 +62,7 @@ public abstract class BubbleUnit : MonoBehaviour {
         upgradeCost = baseStats.UpgradeCost[level];
         cost = baseStats.Cost;
         gameObject.name = bubbleType.ToString() + " - " + lane.ToString() + " - " + unitLevel.ToString() + " - " + isPlayer.ToString();
+        AudioManager.Instance.PlayAudioClip(AudioClips.Spawn, 1);
     }
 
     private void Update() {
@@ -140,6 +141,7 @@ public abstract class BubbleUnit : MonoBehaviour {
 
         if (currentHealth <= 0) {
             Pop();
+            AudioManager.Instance.PlayAudioClip(AudioClips.Pop, 1);
         }
     }
 
@@ -156,6 +158,8 @@ public abstract class BubbleUnit : MonoBehaviour {
         hpSlider.gameObject.transform.position = screenPosition;
     }
 
+
+    
     public virtual void AttackUnit() {
         if (targetEnemy == null) {
             currentState = BubbleState.Moving;
@@ -171,6 +175,7 @@ public abstract class BubbleUnit : MonoBehaviour {
             
             BubbleUnit enemyUnit = targetEnemy.GetComponent<BubbleUnit>();
             if (enemyUnit != null) {
+                
                 enemyUnit.TakeDamage(damage);
 
                 if (enemyUnit.currentHealth <= 0 || enemyUnit == null) {

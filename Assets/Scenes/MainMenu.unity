@@ -452,9 +452,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 692308312}
   sfxSource: {fileID: 692308311}
-  bgmVolume: 0
-  sfxVolume: 0
-  clips: []
+  bgmVolume: 100
+  sfxVolume: 100
+  clips:
+  - {fileID: 8300000, guid: da689e6b56198c546af675b79166e789, type: 3}
+  - {fileID: 8300000, guid: 2221b6b67be88af4eb15631014e9611f, type: 3}
+  - {fileID: 8300000, guid: f00877a5cdb200e4c988b1b16b1d1a2e, type: 3}
+  - {fileID: 8300000, guid: e03f05ee49127bb4f9f54750533ab81b, type: 3}
+  - {fileID: 8300000, guid: 31619a1f4c3b1024b966c5a52de2afa8, type: 3}
+  - {fileID: 8300000, guid: 60ac8f62cb9adb94587828d2910739ee, type: 3}
+  - {fileID: 8300000, guid: a22b8508876ff354d91ed56ad4cdcaaa, type: 3}
 --- !u!82 &692308311
 AudioSource:
   m_ObjectHideFlags: 0
@@ -562,10 +569,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: da689e6b56198c546af675b79166e789, type: 3}
-  m_Resource: {fileID: 8300000, guid: da689e6b56198c546af675b79166e789, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.727
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -23,6 +23,11 @@ public enum BubbleState {
 public enum AudioClips {
     BGM,
     Pop,
+    Spawn,
+    ButtonClicked,
+    WarriorHit,
+    ArcherHit,
+    FloatyHit
 }
 
 public enum SceneNames {

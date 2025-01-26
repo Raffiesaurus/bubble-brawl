@@ -32,6 +32,7 @@ public class UpgradePanel : MonoBehaviour {
     }
 
     public void OnUnitUpgradeButton(string BubbleTypeString) {
+        AudioManager.Instance.PlayAudioClip(AudioClips.ButtonClicked, 1);
         BubbleType type = (BubbleType)Enum.Parse(typeof(BubbleType), BubbleTypeString);
         GameManager.Instance.playerBase.UpgradeBubbleUnit(type);
         SetNewCosts();

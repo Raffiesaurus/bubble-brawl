@@ -44,12 +44,12 @@ public class AudioManager : MonoBehaviour {
     public void ChangeSFXVolume(float newVolume) {
         sfxVolume = newVolume;
         sfxSource.volume = sfxVolume;
-        PlayAudioClip(AudioClips.Pop);
+        PlayAudioClip(AudioClips.Pop, 1);
     }
 
-    public void PlayAudioClip(AudioClips clip) {
+    public void PlayAudioClip(AudioClips clip, float vol) {
         if (sfxSource != null) {
-            sfxSource.PlayOneShot(clips[(int)clip]);
+            sfxSource.PlayOneShot(clips[(int)clip],vol);
         } else {
             Debug.LogWarning("SFX Source is not assigned.");
         }
