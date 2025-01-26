@@ -41,7 +41,11 @@ public class BubbleResourceManager : MonoBehaviour {
     {
         return GameManager.Instance.GetUnitStats(type.ToString()).UpgradeCost[level];
     }
-
+    
+    public int getTroopCost(BubbleType type) 
+    {
+        return GameManager.Instance.GetUnitStats(type.ToString()).Cost;
+    }
     public int GetCurrentBubbles() {
         return Mathf.FloorToInt(currentBubbles);
     }

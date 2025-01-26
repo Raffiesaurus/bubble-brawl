@@ -7,7 +7,7 @@ public class UpgradePanel: MonoBehaviour
 {
     public GameObject playerBase;
     private BubbleResourceManager resourceManager;
-    private int costMultiplier = 2;
+ 
 
     public void Start()
     {
