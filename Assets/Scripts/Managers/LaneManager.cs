@@ -33,6 +33,19 @@ public class LaneManager : MonoBehaviour {
         }
     }
 
+    public int GetUnitsInLane(LanePosition lanePosition, bool isPlayer) {
+        foreach (Lane lane in lanes) {
+            if (lane.lanePosition == lanePosition) {
+                if (isPlayer) {
+                    return lane.playerBubbleCount;
+                } else {
+                    return lane.enemyBubbleCount;
+                }
+            }
+        }
+        return 0;
+    }
+
     private void Update() {
         if (Input.GetMouseButtonDown(0)) {
             RaycastHit hit;
