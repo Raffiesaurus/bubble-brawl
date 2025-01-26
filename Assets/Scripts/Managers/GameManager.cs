@@ -52,6 +52,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void EndGame(bool playerWon) {
+        if (!playerWon) {
+            enemyBase.CleanupUnits();
+        } else {
+            playerBase.CleanupUnits();
+        }
         GameUIManager.GameOver(playerWon);
     }
 

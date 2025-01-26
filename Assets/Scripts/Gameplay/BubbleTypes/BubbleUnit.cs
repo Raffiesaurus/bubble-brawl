@@ -40,7 +40,7 @@ public abstract class BubbleUnit : MonoBehaviour {
     private void Start() {
 
         hpSlider = Instantiate(healthBarPrefab, transform.position, Quaternion.identity).GetComponentInChildren<Slider>();
-        hpSlider.gameObject.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        hpSlider.gameObject.transform.SetParent(GameUIManager.Instance.hpCanvas.transform, false);
 
         animator = GetComponentInChildren<Animator>();
         if (!isPlayerUnit) {
@@ -166,7 +166,9 @@ public abstract class BubbleUnit : MonoBehaviour {
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0) {
             attackTimer = 1 / attackSpeed;
+
             animator.SetTrigger(AnimatorTriggers.StartFight.ToString());
+            
             BubbleUnit enemyUnit = targetEnemy.GetComponent<BubbleUnit>();
             if (enemyUnit != null) {
                 enemyUnit.TakeDamage(damage);
