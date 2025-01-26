@@ -30,12 +30,11 @@ public class BubbleBase : MonoBehaviour {
         hpSlider = GetComponentInChildren<Slider>();
 
         hpSlider = Instantiate(healthBarPrefab, transform.position, Quaternion.identity).GetComponentInChildren<Slider>();
-        hpSlider.transform.localScale = Vector3.one * 2;
-        hpSlider.gameObject.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        hpSlider.transform.localScale = new Vector3(4, 1, 1);
+        hpSlider.gameObject.transform.SetParent(GameUIManager.Instance.hpCanvas.transform, false);
 
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(gameObject.transform.position + Vector3.up * 15.5f);
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(gameObject.transform.position + Vector3.up * 65.0f);
         hpSlider.gameObject.transform.position = screenPosition;
-
     }
 
     public void TakeDamage(float damage) {
@@ -97,6 +96,13 @@ public class BubbleBase : MonoBehaviour {
             return -1;
         }
 
+    }
+
+    public void CleanupUnits() {
+        BubbleUnit[] bubbleChildren = GetComponentsInChildren<BubbleUnit>();
+        foreach (BubbleUnit bubbleChild in bubbleChildren) {
+            bubbleChild.Pop();
+        }
     }
 
     public void Reset() {

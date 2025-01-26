@@ -5,6 +5,8 @@ public class GameUI_HUD : MonoBehaviour {
 
     [SerializeField] private TMP_Text bubbleResourceText;
 
+    private PausePanel pausePanel;
+
     private UpgradePanel unitUpgradePanel;
 
     private SpawnPanel spawnPanel;
@@ -15,6 +17,12 @@ public class GameUI_HUD : MonoBehaviour {
         unitUpgradePanel = GetComponentInChildren<UpgradePanel>();
         spawnPanel = GetComponentInChildren<SpawnPanel>();
         lanePanel = GetComponentInChildren<LanePanel>();
+        pausePanel = GetComponentInChildren<PausePanel>();
+    }
+
+    public void OnPauseButton() {
+        Time.timeScale = 0.0f;
+        pausePanel.gameObject.SetActive(true);
     }
 
     private void Update() {
@@ -27,6 +35,6 @@ public class GameUI_HUD : MonoBehaviour {
     }
 
     private void UpdateResourceDisplay() {
-        bubbleResourceText.text = $"Bubbles: {Mathf.Floor(GameManager.Instance.GetMyBubbleCount())}";
+        bubbleResourceText.text = $"{Mathf.Floor(GameManager.Instance.GetMyBubbleCount())}";
     }
 }

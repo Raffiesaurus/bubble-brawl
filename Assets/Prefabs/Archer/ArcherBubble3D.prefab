@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8881633258867566120}
-  - component: {fileID: 7717761708500094676}
+  - component: {fileID: 395980078856813228}
   m_Layer: 6
   m_Name: ArcherBubble3D
   m_TagString: BubbleUnit
@@ -97,7 +97,7 @@ Transform:
   - {fileID: 8540544552077373890}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7717761708500094676
+--- !u!114 &395980078856813228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3044124720825605823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce59071c8e86c7e49942d9374e8ffa84, type: 3}
+  m_Script: {fileID: 11500000, guid: 825472adc3e93d742a3f856d6e196076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
@@ -205,8 +205,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1921368461716772884, guid: 9a3ae7775fba2b94c8ab49e54f030f8a, type: 3}
-  - {fileID: 8368722655750445499, guid: 9a3ae7775fba2b94c8ab49e54f030f8a, type: 3}
+  - {fileID: 2100000, guid: 681420ae3c5115c44b22995806b43f3d, type: 2}
+  - {fileID: 2100000, guid: 3839c8e8373c5d54b963741498d17a7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -314,9 +314,9 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6034957751646507721, guid: 9a3ae7775fba2b94c8ab49e54f030f8a, type: 3}
-  - {fileID: 8368722655750445499, guid: 9a3ae7775fba2b94c8ab49e54f030f8a, type: 3}
-  - {fileID: 8748892135801146194, guid: 9a3ae7775fba2b94c8ab49e54f030f8a, type: 3}
+  - {fileID: 2100000, guid: 4fcdeca2d2a56b24f8ff3e77b7e40104, type: 2}
+  - {fileID: 2100000, guid: 3839c8e8373c5d54b963741498d17a7b, type: 2}
+  - {fileID: 2100000, guid: 6b042462f7c672c46a5b74db8914cbcc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

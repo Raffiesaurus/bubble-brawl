@@ -13,7 +13,7 @@ public class AIController : MonoBehaviour {
         homeBase = GetComponent<BubbleBase>();
         homeBase.isPlayerBase = false;
     }
-
+ 
     private void Update() {
         cooldownTimer += Time.deltaTime;
 
