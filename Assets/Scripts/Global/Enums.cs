@@ -20,7 +20,7 @@ public enum BubbleState {
     FightingBase
 }
 
-public enum AudioClip {
+public enum AudioClips {
     BGM,
     Pop,
 }

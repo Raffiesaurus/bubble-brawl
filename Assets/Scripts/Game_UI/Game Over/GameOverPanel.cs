@@ -15,7 +15,7 @@ public class GameOverPanel : MonoBehaviour {
     }
 
     public void OnExitButton() {
-        SceneManager.LoadScene(SceneNames.MainMenu.ToString(), LoadSceneMode.Single);
+        SceneManager.LoadScene(SceneNames.MainMenu.ToString());
     }
 
 }

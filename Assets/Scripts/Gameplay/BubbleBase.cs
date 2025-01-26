@@ -100,7 +100,6 @@ public class BubbleBase : MonoBehaviour {
     }
 
     public void Reset() {
-        Debug.Log("Base Reset");
         currentHealth = maxHealth;
         bubbleResource.Reset();
         unitLevelManager.Reset();

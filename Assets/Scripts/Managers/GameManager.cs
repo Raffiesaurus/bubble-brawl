@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void StartGame() {
+        Time.timeScale = 1.0f;
         playerBase.Reset();
         enemyBase.Reset();
     }
