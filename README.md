@@ -4,8 +4,11 @@ Dive into the chaotic world of Bubble Brawl, a fast-paced lane-based strategy ga
 
 Victory depends on your ability to adapt, manage resources, and outsmart your opponent. The battle continues until a unit breaches the enemy base, delivering the decisive blow to claim victory. With its dynamic gameplay and high-stakes decision-making, Bubble Brawl offers a fresh take on tactical warfare.
 
-Tags:
+![Screenshot 2025-01-26 143105](https://github.com/user-attachments/assets/ca83208f-ca38-4f41-9234-52f6ff63ce63)
 
+![Screenshot 2025-01-26 154937](https://github.com/user-attachments/assets/cf97ec26-24f1-485b-9e8e-b298b86444a2)
+
+Tags:
 Genre: Strategy, Lane-Based Strategy, Tower Offense
 
 Gameplay: Resource Management, Real-Time Tactics, Base Defense, Army Summoning
