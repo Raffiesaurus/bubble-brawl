@@ -1,22 +1,43 @@
 # Bubble Brawl
 
-### This was an entry to [Global Game Jam 2025](https://globalgamejam.org/games/2025/bubble-brawl-8-1) with the jam theme of 'Bubble'. Took on the diversifiers Sharing is caring & Unite Generations.
+A fast-paced lane-based strategy game made in **48 hours** for **Global Game Jam 2025** (theme: *Bubble*). Summon units across three lanes, manage your bubble resources, and punch through the enemy base before they punch through yours.
 
-Dive into the chaotic world of Bubble Brawl, a fast-paced lane-based strategy game where every bubble counts! Use your bubble resources strategically to summon units in one of three lanes, each advancing toward the enemy base. Engage in thrilling battles as your units clash with enemy forces attempting to block your progress.
+🎮 **[Play / Download on itch.io](https://raffiesaurus.itch.io/bubble-brawl)**
 
-Victory depends on your ability to adapt, manage resources, and outsmart your opponent. The battle continues until a unit breaches the enemy base, delivering the decisive blow to claim victory. With its dynamic gameplay and high-stakes decision-making, Bubble Brawl offers a fresh take on tactical warfare.
+![Screenshot](https://github.com/user-attachments/assets/ca83208f-ca38-4f41-9234-52f6ff63ce63)
 
-Fight until your very last pop.
+---
 
-# [Download the game here!](https://raffiesaurus.itch.io/bubble-brawl)
+## How to Play
 
-![Screenshot 2025-01-26 143105](https://github.com/user-attachments/assets/ca83208f-ca38-4f41-9234-52f6ff63ce63)
+- Spend **bubble resources** to summon units into one of three lanes
+- Units automatically advance toward the enemy base and clash with opposing units
+- First player to breach the enemy base wins
+- Adapt your lane pressure, manage resource timing, and outmanoeuvre your opponent
 
-![Screenshot 2025-01-26 154937](https://github.com/user-attachments/assets/cf97ec26-24f1-485b-9e8e-b298b86444a2)
+---
 
-Tags:
-Genre: Strategy, Lane-Based Strategy, Tower Offense
+## About
 
-Gameplay: Resource Management, Real-Time Tactics, Base Defense, Army Summoning
+Built for [Global Game Jam 2025](https://globalgamejam.org/games/2025/bubble-brawl-8-1) with the diversifiers **Sharing is Caring** and **Unite Generations**.
 
-Aesthetic: Bubble-Themed, Minimalist, Competitive
+| | |
+|---|---|
+| **Genre** | Lane-Based Strategy / Tower Offense |
+| **Gameplay** | Resource Management, Real-Time Tactics, Base Defense |
+| **Engine** | Unity |
+| **Jam** | Global Game Jam 2025 |
+| **Theme** | Bubble |
+
+![Screenshot](https://github.com/user-attachments/assets/cf97ec26-24f1-485b-9e8e-b298b86444a2)
+
+---
+
+## Built With
+
+- **Engine:** Unity
+- **Language:** C#
+
+---
+
+*Fight until your very last pop.*
